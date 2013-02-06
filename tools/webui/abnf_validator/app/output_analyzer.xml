@@ -1,0 +1,11 @@
+<module name="Demo plugin">
+  <nome>Output Analyzer plugin</nome>
+  <tab_text>Output Analyzer</tab_text>
+  <suffix>output_analyzer</suffix>
+  <autore>Matteo Rosi</autore>
+  <descrizione>Add component to read output files after a simulation</descrizione>
+  <extra_file>lib/output_analyzer.rb</extra_file>
+  <extra_file>public/javascripts/loading.js</extra_file>
+  <extra_file>public/images/ajax-loader.gif</extra_file>
+</module>
+

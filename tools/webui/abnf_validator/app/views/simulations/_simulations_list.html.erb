@@ -1,0 +1,32 @@
+<span style="float:left;">
+	<h2>Your Simulations list</h2>
+</span>
+
+<span style="float:right; margin-top:25px; margin-right:20px;">
+	Updated at <%= @updated_at %></h2>
+</span>
+
+
+<table width="98%">
+	<th>PID</th><th>User</th><th>Filename</th><th>Output</th><th>Launched</th><th width="35px">Run</th><th width="35px">Del</th><th width="35px">Stop</th><th width="35px">More</th>
+	<% if @simulations.length != 0 %>
+		<% for s in @simulations -%>
+			<tr class="<%= cycle('odd', 'even') %>" id="<%= s.id %>">
+				<td><%= s.pid %></td>
+				<td><%= s.username %></td>
+				<td><%= s.filename %></td>
+				<td><%= s.output %></td>
+				<td><%= s.created_at %></td>
+				<td align="center"><%= s.running ? image_tag("/images/dialog-ok.png") : image_tag("/images/dialog-no.png") %></td>
+				
+				<td align="center"><%= link_to_remote image_tag("/images/del.png"), {:url => { :controller => :simulations, :action => :delete_simulation, :id => s.id, :output => s.output}, :update => "right_column", :confirm => ('Delete simulation and all its output files?'), :success => "notify()"} %></td>
+				
+				<td align="center"><%= link_to_remote image_tag("/images/stop.png"), {:url => { :controller => :simulations, :action => :stop_simulation, :pid => s.pid}, :update => "right_column", :confirm => ('Stop simulation?'), :success => "notify()"} %></td>
+				
+				<td align="center"><%= link_to_remote image_tag("/images/lente.png"), {:url => { :controller => :simulations, :action => :results_list, :output => s.output}, :update => "right_column", :success => "hide_simulation()"} %></td>
+			</tr>
+		<% end -%>
+	<% else %>
+		<tr class="odd"><td colspan="9">Nessun file trovato!</td></tr>
+	<% end %>
+</table>

@@ -1,0 +1,39 @@
+CFLAGS=-I. -I../lib
+LDFLAGS=-L../lib -lstress
+
+all: ABNFParser 
+
+ABNFParser: ABNFParser.o scanner.o driver.o parser.o symbol.o 
+	g++ $(CFLAGS) $(LDFLAGS) -o "$@" $^
+	rm *.o
+
+scanner.hh scanner.cc: scanner.ll
+	flex --header-file=scanner.hh --outfile=scanner.cc  $^
+
+scanner.o: scanner.cc parser.hh driver.hh driver.hh
+	g++ $(CFLAGS) -c $<
+
+parser.cc parser.hh position.hh location.hh stack.hh: parser.yy
+	bison -o  parser.cc $<
+
+parser.o: parser.cc parser.hh driver.hh scanner.hh driver.hh symbol.h
+	g++ $(CFLAGS) -c $<
+
+driver.o: driver.cc driver.hh parser.hh scanner.hh 
+	g++ $(CFLAGS) -c $<
+
+symbol.o: symbol.cc symbol.h
+	g++ $(CFLAGS) -c $<
+
+ABNFParser.o: ABNFParser.cc driver.hh parser.hh scanner.hh 
+	g++ $(CFLAGS) -c $<
+
+
+
+
+clean:
+	-rm ABNFParser
+	-rm scanner.cc scanner.hh
+	-rm parser.cc parser.hh position.hh location.hh stack.hh
+	-rm driver.o parser.o validate.o scanner.o 
+

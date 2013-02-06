@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Abnf Validator</title>
+			<%= stylesheet_link_tag "abnf_validator" , :media => "all" %>
+			<%= javascript_include_tag :defaults %>
+			<%= javascript_include_tag "linedtextarea" %>
+			<%= javascript_include_tag "jquery-hotkeys" %>
+			<%= javascript_include_tag "loading" %>
+			<%= javascript_include_tag 'excanvas.pack.js','jquery.flot.pack.js' %>
+</head>
+<body onload="resize();" onresize="resize(); setRowNumber();">
+<div id="flash_messages"></div>
+<div id="header">
+		<div id="scritta">
+			<a href="http://code.google.com/p/stress" target="_blank"><div id="stress_link" style="width:256px; height:20px; top:100px; left:230px; position:absolute;"></div></a>
+		</div>
+	<% if session[:autenticato] %>
+		<div id="benvenuto">
+			<!--<span style="float:left;">Benvenuto <%= session[:username] -%>!</span>-->
+			<span class="logout"><%= link_to(image_tag("logout.png"), :action => "logout") %></span>
+		</div>
+		<% if !session[:is_admin] %>
+			<div id="tabs">
+				<ul>
+					<% @plugins.each do |p| %>
+						<li onclick="set_active_class();" id="<%= p.plugin['tab_text'] %>"><a href="/<%= p.plugin['suffix'].downcase %>"><%= p.plugin["tab_text"] %></a></li>
+					<% end %>
+					<li onclick="set_active_class();" id="Stress"><a href="/simulations">Stress</a></li>
+					<li onclick="set_active_class();" id="Editor"><a href="/users">Editor</a></li>
+				<ul>
+			</div>
+		<% end %>
+	<% end %>
+</div>
+
+<div id="corpo">
+
+<%= yield %>
+
+</div>
+<div id="footer">
+Web application written by Marco Sangiorgi, email: <%= mail_to "lillo@lilik.it" %>, using only open source programs (Gimp, Gedit and Unicorn for webserver)
+</div>
+</body>
+</html>

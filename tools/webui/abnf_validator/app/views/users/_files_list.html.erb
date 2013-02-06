@@ -1,0 +1,18 @@
+<% if @files.length != 0 %>
+	<table>
+		<th>Name</th><th>Library</th><th>Created</th><th>Modified</th><th>Del</th><th>Unshare</th><th>Modify</th>
+		<% for f in @files -%>
+			<tr class="<%= cycle('odd', 'even') %>" id="<%= f.id %>">
+				<td width="250"><%= link_to f.name, :controller => "abnf_files", :action => "index", :id => f.id %></td>
+				<td width="150"><%= f.library.name %></td>
+				<td width="200"><%= f.created_at.to_s(:my_date) %></td>
+				<td width="200"><%= f.updated_at.to_s(:my_date) %></td>
+				<td><%= button_to_remote "X", {:url => { :controller => :abnf_files, :action => :delete_file, :id => f.id}, :confirm => ('Confirm delete?'), :update => "files_list", :success => "notify()"}, :disabled => f.creator != session[:user_id] %></td>
+				<td align="center"><%= button_to_remote "X", {:url => { :controller => :abnf_files, :action => :unshare_file, :id => f.id}, :confirm => ('Confirm unshare?'), :update => "files_list", :success => "notify()"}, :disabled => f.creator == session[:user_id] %></td>
+				<td align="center"><%= button_to_remote "M", {:url => { :controller => :abnf_files, :action => :modify_file_properties, :file_id => f.id}, :update => "right_column"} %></td>
+			</tr>
+	<% end -%>
+</table>
+<% else %>
+	<i>Nessun file trovato!</i>
+<% end %>

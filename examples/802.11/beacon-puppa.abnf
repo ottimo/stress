@@ -1,0 +1,28 @@
+beacon = <%FailSafeRepeat%> %d50 exec
+exec = beacon1 readauthreq sendauthrep
+
+beacon1 = send pause
+pause = <%UPause%> %d100000
+send = <%RAW_send%> frame
+
+frame = framecontrol duration broadcast-MAC dlink-src dlink-src data
+framecontrol = %x8000
+duration = %x0000
+broadcast-MAC = %xffffffffffff
+dlink-src = %x001e58a0e989
+data = data1 data2 data3 essid data4 data5
+data1 = %x05d1
+data2 = %x98c1fc7c02000000
+data3 = %x6400310000
+;essid = %x05 "Prova" 
+essid = essidlength stringa
+essidlength = <%Length%> var %d1
+var = <%Memorize%> "essid" valoreessid
+valoreessid = "Prova" 
+stringa = <%Variable%> "essid" 
+data4 = %x010482848b
+data5 = %x9603010105030002
+
+readauthreq = <%RAW_read%> checkbeacon ; mask
+checkbeacon = <%ValueCheck%> %d0 %d2 %x8000
+;mask = <%MaskCheck%> %xffff %x8000

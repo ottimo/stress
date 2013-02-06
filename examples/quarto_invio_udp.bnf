@@ -1,0 +1,5 @@
+INVIOUDP = prova prova2
+prova = <%UDP_send%> "Puppa" seconda
+seconda = "me" terzo " al sushi"
+terzo = "lo"
+prova2 = <%UDP_read%> "prova"

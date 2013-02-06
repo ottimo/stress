@@ -1,0 +1,32 @@
+root = packet-1 packet-2 read read
+
+read = <%TCP_read%> %d0
+
+packet-1 = <%TCP_send%> HypertextTransferProtocol-2
+packet-2 = <%TCP_send%> eXtensibleMarkupLanguage-2
+
+HypertextTransferProtocol-2 =  HypertextTransferProtocolTextItem-2 UserAgent-2 Host-2 ContentType-2 HypertextTransferProtocolTextItem1-2 ContentLength-2 Connection-2 HypertextTransferProtocolTextItem2-2
+
+HypertextTransferProtocolTextItem-2 =   "POST /xml/soapresponder.wsdl HTTP/1.1" %x0d0a ;POST /xml/soapresponder.wsdl HTTP/1.1\r\n
+
+UserAgent-2 =   "User-Agent: Mac OS X; WebServicesCore (357)" %x0d0a ;User-Agent: Mac OS X; WebServicesCore (357)\r\n
+
+Host-2 =   "Host: soapclient.com" %x0d0a ;Host: soapclient.com\r\n
+
+ContentType-2 =   "Content-Type: text/xml" %x0d0a ;Content-Type: text/xml\r\n
+
+HypertextTransferProtocolTextItem1-2 =   "Soapaction: http://www.SoapClient.com/SoapObject" %x0d0a ;Soapaction: http://www.SoapClient.com/SoapObject\r\n
+
+ContentLength-2 =   "Content-Length: 665" %x0d0a ;Content-Length: 673\r\n
+
+Connection-2 =   "Connection: close" %x0d0a ;Connection: close\r\n
+
+HypertextTransferProtocolTextItem2-2 =  %x0d0a ;\r\n
+
+eXtensibleMarkupLanguage-2 =  xmlXmlpiXml-2 Tag-2
+
+xmlXmlpiXml-2 =   "<?xml version=" %x22 "1" %x2e "0" %x22 " encoding=" %x22 "utf-8" %x22 "?>"  ;<?xml
+
+Tag-2 =   "<SOAP-ENV:Envelope" %x0d0a "    xmlns:xsd=" %x22 "http://www.w3.org/2001/XMLSchema" %x22 %x0d0a "    xmlns:xsi=" %x22 "http://www.w3.org/2001/XMLSchema-instance" %x22 %x0d0a "    xmlns:SOAP-ENC=" %x22 "http://schemas.xmlsoap.org/soap/encoding/" %x22 %x0d0a " SOAP-ENV:encodingStyle=" %x22 "http://schemas.xmlsoap.org/soap/encoding/" %x22 %x0d0a "    xmlns:SOAP-ENV=" %x22 "http://schemas.xmlsoap.org/soap/envelope/" %x22 ">" %x0d0a " <SOAP-ENV:Body>" %x0d0a "        <m:Method1 xmlns:m=" %x22 "http://www.SoapClient.com/xml/SoapResponder.wsdl" %x22 ">" %x0d0a "<bstrParam1 xsi:type=" %x22 "xsd:string" %x22 "></bstrParam1>" %x0d0a "<bstrParam2 xsi:type=" %x22 "xsd:string" %x22 "></bstrParam2>" %x0d0a "        </m:Method1>" %x0d0a "      </SOAP-ENV:Body>" %x0d0a "    </SOAP-ENV:Envelope>"  %x0d0a
+;<SOAP-ENV:Envelope>
+

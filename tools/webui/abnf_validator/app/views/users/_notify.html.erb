@@ -1,0 +1,9 @@
+<% if session[:messages][:type] == "err" %>
+	<div style="background-color:#bb0000; text-align:center;	padding:30px;	width:180px;">
+		<%= session[:messages][:msg] %>
+	</div>
+<% else %>
+	<div style="background-color:#DFFFE0; text-align:center;	padding:30px;	width:180px;">
+		<%= session[:messages][:msg] %>
+	</div>
+<% end %>

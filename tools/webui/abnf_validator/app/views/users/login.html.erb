@@ -1,0 +1,27 @@
+<div id="login">
+	<div id="ni2s3">
+	
+		<span style="font-size: 60px; margin-right:45px; text-shadow: #555 3px 3px 5px;">NI2S3</span>
+		<%= image_tag("logo_ni2s3.png") %>
+		<span style="font-size:20px;  margin-left:45px; text-shadow: #999 1px 1px 1px;">Project N. 225488</span><br/>
+		<i style="text-shadow: #999 1px 1px 1px;">NET-Centric Information & Integration Services for Security System</i>
+		
+		<div id="login-form" >
+			<p style="color: green; padding-top:50px;"><%= flash[:notice] %></p>
+			<% form_tag do %>
+				<p>
+					<label for="username">Username:</label>
+					<%= text_field_tag :username, params[:username] %>
+				</p>
+				<p>
+					<label for="password">Password:</label>
+					<%= password_field_tag :password, params[:password] %>
+				</p>
+				<p>
+					<%= submit_tag "Login", :action => :login %>
+				</p>
+			<% end %>
+		</div>
+		
+	</div>
+</div>

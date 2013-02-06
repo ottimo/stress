@@ -1,0 +1,16 @@
+<% form_tag ({:action => 'create_file_or_library'}, :multipart => true) do %>
+	<label for="upload_file">Upload a new file:</label><br/>
+	<%= file_field 'upload_file', 'datafile', :size => 15 %>
+	<label for="library">Library:</label>
+	<% if !@libraries.empty? %>
+		<select id="library" name="library">
+			<% for l in @libraries %>
+				<% if File.directory?(l) %><option value="<%= File.basename(l) %>"><%= File.basename(l) %></option><% end %>
+			<% end %>
+		</select>
+	<% else %>
+		<br/><i>Nessuna libraria trovata</i>
+	<% end %>
+	<br/>
+	<%= submit_tag "Upload" %>
+<% end %>

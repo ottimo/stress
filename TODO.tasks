@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<gtodo>
+  <category title="Personale" place="0">
+    <item>
+      <attribute id="1271329583" priority="0" done="0" start_date="733877" enddate="99999999" notify="0" endtime="-60" last_edited="1271329583"/>
+      <summary>Thread per info GUI </summary>
+      <comment>mettere un thread che in RT via socket distribuisce informazioni sull'esecuzione della test suite alla GUI</comment>
+    </item>
+    <item>
+      <attribute id="1271329739" priority="1" done="0" start_date="733877" enddate="99999999" notify="0" endtime="-60" last_edited="1271329739"/>
+      <summary>Monitor di processo SNMP</summary>
+      <comment>Action per prelevare informazioni da un SNMP per aggregare nell'output dei test case informazioni sulla macchina sotto test</comment>
+    </item>
+    <item>
+      <attribute id="1271329671" priority="1" done="0" start_date="733877" enddate="99999999" notify="0" endtime="-60" last_edited="1271416574"/>
+      <summary>Monitor di Processo</summary>
+      <comment>Monitor stand alone che osserva un determinato processo nella macchina sotto test ed eventualmente via rete fornisce delle statistiche.
+
+Eventualmente da associare con una Action nel test case per aggregare certe informazioni puntuali durante l'esecuzione dei test
+
+Comunicazione inizio testcase e fine testcase
+
+Memorizzazione storico risorse (cpu, memoria, iowait, etc...)  con campionamento a delta-t
+
+Utilizzo di un debugger per rilevare comportamenti errati (mem fault. exception non gestite, intercettamento segnali, etc...)
+</comment>
+    </item>
+    <item>
+      <attribute id="1271416815" priority="1" done="0" start_date="733878" enddate="99999999" notify="0" endtime="-60" last_edited="1271416846"/>
+      <summary>Inserimento automatico anomalie</summary>
+      <comment>Pre-elaborazione ABNF per creare automaticamente anomalie:
+
+Tipo di anomalie (lunghezza, delimitatori, terminatori, caratteri non stampabili o non validi, etc )
+Lista di valori delle anomalie da inserire 
+Punti di inserimento </comment>
+    </item>
+  </category>
+  <category title="Affari" place="1"/>
+  <category title="Non classificati" place="2"/>
+</gtodo>

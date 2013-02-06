@@ -1,0 +1,54 @@
+root = packet-1
+
+packet-1 = <%RAW_send%> IEEE80211RadiotapCaptureHeader-1 IEEE80211WirelessLAN-1 IEEE80211WirelessLANManagementFrame-1
+
+IEEE80211RadiotapCaptureHeader-1 =  HeaderRevision-1 HeaderPad-1 HeaderLength-1 PresentFlags-1 Flags-1 DataRate-1 ChannelFrequency-1 ChannelType-1 SSISignalDBm-1 Antenna-1 RXFlags-1
+
+HeaderRevision-1 =  %x00
+
+HeaderPad-1 =  %x00
+
+HeaderLength-1 =  %x0018
+
+PresentFlags-1 =  %x0000482e
+
+Flags-1 =  %x00
+
+DataRate-1 =  %x02 ;Data Rate: 1.0 Mb/s
+
+ChannelFrequency-1 =  %x0971 ;Channel frequency: 2417 [BG 2]
+
+ChannelType-1 =  %x00a0
+
+SSISignalDBm-1 =  %xffffffd0 ;SSI Signal: -48 dBm
+
+Antenna-1 =  %x01
+
+RXFlags-1 =  %x0000
+
+IEEE80211WirelessLAN-1 =  TypeSubtype-1 FrameControlField-1 Duration-1 DestinationAddress-1 SourceAddress-1 BSSId-1 FragmentNumber-1 SequenceNumber-1
+
+TypeSubtype-1 =  %x08
+
+FrameControlField-1 =  %x0080 ;Frame Control: 0x0080 (Normal)
+
+Duration-1 =  %x0000
+
+DestinationAddress-1 =  %xffffffffffff
+
+SourceAddress-1 =  %x000cce52d9ae
+
+BSSId-1 =  %x000cce52d9ae
+
+FragmentNumber-1 =  %x0000
+
+SequenceNumber-1 =  %x05d1
+
+IEEE80211WirelessLANManagementFrame-1 =  FixedParameters-1 TaggedParameters-1
+
+FixedParameters-1 =  %x00000000000000000000000c ;Fixed parameters (12 bytes)
+
+TaggedParameters-1 =  %x0016 ;Tagged parameters (22 bytes)
+
+
+

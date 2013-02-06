@@ -1,0 +1,30 @@
+<table width ="98%">
+<tr>
+<td width="20%" style=" vertical-align: top;">
+<div id="som_menu">
+<ul>
+<% @read_frames.each do |rf| %>
+<li>
+<%= link_to_remote rf.position.to_s+"° Frame",
+							{:url => { :controller => :output_analyzer, :action => :get_som_predictor, :output => @simulation_selected, :frames => rf.position}, 
+							:before => "loading('som_predictiont')",
+							:update => "som_predictiont"} %> 
+</li>
+<% end %>
+</ul>
+</div>
+
+</td>
+<td width="80%">
+
+<div id="som_predictiont"></div>
+
+</td>
+</tr>
+</table>
+<div id="testcase_menu">
+<%= link_to_remote "View testcase",
+							{:url => { :controller => :output_analyzer, :action => :get_testcase_list, :output => @simulation_selected}, 
+							:before => "loading('testcase_menu')",
+							:update => "testcase_menu"} %> 
+</div>

@@ -1,0 +1,106 @@
+<div id="left_column">
+<strong>Run stress simulation:</strong><br/><br/>
+<table>
+	<tr>
+		<td>Address:</td><td><%= text_field_tag :address, session[:address] %></td>
+	</tr>
+	<tr>
+		<td>Port Nr.:</td><td><%= text_field_tag :port, session[:port] %></td>
+	</tr>
+	<tr>
+		<% 
+			o_checked = false 
+			o_checked = true if session[:overwrite] == "true"
+		%>
+		<td>Output:</br>
+			Overwrite? <%= check_box_tag 'overwrite', true, o_checked %>
+		</td>
+		<td><%= text_field_tag :output, session[:output] %></td>
+	</tr>
+	<tr>
+		<td>Type:</td><td><%= select_tag "type", "<option>xml</option><option>dot</option>" %></td>
+	</tr>
+	<tr>
+		<td>Timeout (msec):</td><td><%= text_field_tag :timeout, (2000 or session[:timeout]) %></td>
+	</tr>
+	<tr>
+		<td>Delay (msec):</td><td><%= text_field_tag :delay, (250 or session[:delay]) %></td>
+	</tr>
+	<tr>
+		<% 
+			checked = false 
+			checked = true if session[:autoinjection] == "true"
+		%>
+		<td>Autoinject:</td><td><%= check_box_tag 'autoinjection', true, checked %></td>
+	</tr>
+	<tr>
+		<td>Test Case generator:</td><td><%= select_tag "tsgenerator", "<option>Exponential</option><option>Sequential</option>" %></td>
+	</tr>
+	<tr>
+		<td>Monitor:</td><td><%= check_box_tag 'monitor', true, true %></td>
+	</tr>
+	<tr>
+		<td>Server:</td><td><%= check_box_tag 'server_mode' %></td>
+	</tr>
+	<tr>
+		<td></td><td><button onclick="launch_simulation();">Run stress simulation!</button></td>
+	</tr>
+</table>
+	
+	<hr>
+	
+	<br/><br/>
+	<div id="validator_report">
+	</div>
+</div>
+<div id="right_column">
+	<div id="editor">
+	<%= render :partial => "editor" %>
+	</div>
+</div>
+<div id="console">
+	<h3 style="padding:5px; float:left;">Results:</h3><button style="float:right; margin:5px;" onclick="$('#console').hide('slide',{direction:'down'});">X</button>
+	<div id="console-text"></div>
+</div>
+
+
+
+<script>
+	setRowNumber();
+
+	function launch_simulation(){
+		$.ajax({
+			type: 'post',
+			url: '/simulations/validate_before_simulation/',
+			data: ({content : $('#editor_textarea').val()}) ,
+			dataType: 'html',
+			success: function(data) {
+				if(data == "false"){
+					notify();
+					return false;
+				}else{
+					$.ajax({
+						type: 'post',
+						url: '/simulations/launch_simulation/',
+						data: ({address : $("#address").val(), 
+								port : $("#port").val(), 
+								output : $("#output").val(), 
+								overwrite : $("#overwrite")[0].checked, 
+								abnf : $("#editor_textarea").val(), 
+								type : $("#type").val(), 
+								timeout : $("#timeout").val(),
+								delay : $("#delay").val(),
+								autoinjection : $("#autoinjection")[0].checked,
+								tsgenerator : $("#tsgenerator").val(),  
+								monitor : $("#monitor")[0].checked, 
+								server_mode : $("#server_mode")[0].checked}),
+						dataType: 'html',
+						complete: function(){
+							notify();
+						}
+					});
+				}			
+			}
+		});
+	}
+</script>

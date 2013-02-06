@@ -1,0 +1,9 @@
+BASE64 = send read
+
+read = <%TCP_read%> %d01
+send = <%TCP_send%> decoded fault
+
+fault  = encoded / %d10
+
+decoded = <%Base64Decode%> "cHJvdmE="
+encoded = <%Base64Encode%> "prova"

@@ -1,0 +1,10 @@
+<% if @file %>
+	<span style="line-height:25px;"><%= File.basename("#{@file_name}") %>:<br/></span>
+	<% form_remote_tag :url => "update_file" do %>
+		<%= text_area_tag "file_content", @file, "cols" => "120", "id" => "text_area" %>
+		<%= hidden_field_tag 'name', "#{@file_name}" %>
+		<%= submit_tag -%>
+	<% end %>
+<% else %>
+	<br/><i>Seleziona un file dall'elenco</i>
+<% end %>

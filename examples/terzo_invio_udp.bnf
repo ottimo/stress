@@ -1,0 +1,5 @@
+INVIOUDP = prova prova2
+prova = "%STRESS_send%" "Puppa" seconda
+seconda = "me" terzo " al sushi"
+terzo = "lo"
+prova2 = "%STRESS_read%"

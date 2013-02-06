@@ -1,0 +1,89 @@
+<div id="placeholder" style="width:1200px;height:600px"></div>
+
+<p id="hoverdata">Mouse hovers at
+    (<span id="x">0</span>, <span id="y">0</span>). <span id="clickdata"></span></p>
+
+
+
+<script type="text/javascript">
+$(function () {
+<% @number_of_rtt.times do |n| %>
+    var graph_data<%= n %> = [];
+   <% end %> 
+    
+    <% @number_of_rtt.times do |n| %>
+		<% @rtts.each_index do |i| %>
+			<% if @rtts[i] != nil and @rtts[i][n] != nil %>
+			graph_data<%= n %>.push([<%= i %>,<%= @rtts[i][n].value %>]);
+			<% 	puts n.to_s+" "+i.to_s+" "+@rtts[i][n].value.to_s %>
+   			<% end %>
+		<% end %>
+    <% end %>
+    
+    
+    
+    var plot = $.plot($("#placeholder"),[
+	<% @number_of_rtt.times do |n| %>
+           { data: graph_data<%= n %>, label: "<%= n+1 %>° Frame"}<%= "," unless n == @number_of_rtt-1 %>
+    <% end %>
+           ], { series: {
+                   lines: { show: true },
+                   points: { show: true }
+               },
+               grid: { hoverable: true, clickable: true }
+             });
+
+    function showTooltip(x, y, contents) {
+        $('<div id="tooltip">' + contents + '</div>').css( {
+            position: 'absolute',
+            display: 'none',
+            top: y + 5,
+            left: x + 5,
+            border: '1px solid #fdd',
+            padding: '2px',
+            'background-color': '#fee',
+            opacity: 0.80
+        }).appendTo("body").fadeIn(200);
+    }
+
+    var previousPoint = null;
+    $("#placeholder").bind("plothover", function (event, pos, item) {
+        $("#x").text(pos.x.toFixed(2));
+        $("#y").text(pos.y.toFixed(2));
+
+        if (item) {
+			if (previousPoint != item.dataIndex) {
+				previousPoint = item.dataIndex;
+                $("#tooltip").remove();
+                var x = item.datapoint[0].toFixed(2),
+                    y = item.datapoint[1].toFixed(2);
+                  
+                showTooltip(item.pageX, item.pageY,
+							item.series.label + " of Testcase number " + x + " = " + y);
+            }
+        }
+        else {
+            $("#tooltip").remove();
+            previousPoint = null;            
+        }
+    });    
+    
+    $("#placeholder").bind("plotclick", function (event, pos, item) {
+        if (item) {
+            $("#clickdata").text("You clicked on Testcase number: " + item.dataIndex + ".");
+            plot.highlight(item.series, item.datapoint);
+			$("#tooltip").remove();
+			$.ajax({
+				type: 'post',
+				url: '/output_analyzer/get_testcase_list',
+				dataType: 'html',
+				data: ({output: '<%= @simulation_selected %>',testcase_id: item.dataIndex}),
+				success: function(data){
+					$("#output_analyzer_result").html(data);
+				}
+			});
+		
+        }
+    });
+});
+</script>

@@ -1,0 +1,11 @@
+<% form_tag ({:action => 'import_new_file'}, :multipart => true) do %>
+	<p><label for="upload_file">Select File</label>: 
+	<%= file_field 'upload', 'datafile' %></p>
+	<select id="library_id" name="library_id">
+			<% for l in @libraries %>
+				<option value="<%= l.id %>"><%= l.name %></option>
+			<% end %>
+		</select>
+	<%= submit_tag "Import!" %><br/>
+<% end %>
+

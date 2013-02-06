@@ -1,0 +1,10 @@
+<h2 style="float:left;">Results File lists</h2>
+<span style="float:right; margin-right:20px; margin-top:25px;">
+	<%= button_to_remote "Back to simulations list", {:url => { :controller => :simulations, :action => :update_simulations_list}, :update => 	"right_column", :success => "show_simulation()"} %>
+</span>
+<div style="clear:both;"></div>
+<ul>
+<% @files.each do |f| %>
+	<li><%= link_to_remote (f.split("/").last), {:url => { :controller => :simulations, :action => :show_file_content, :file => f}, :update => 	"right_column", :method => :post} %></li>
+<% end %>
+</ul>

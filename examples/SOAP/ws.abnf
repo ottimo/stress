@@ -1,0 +1,39 @@
+root = packet-2 read read
+
+read = <%TCP_read%> %d0
+
+; packet-1 = <read or send>
+packet-2 = <%TCP_send%> HypertextTransferProtocol-2 eXtensibleMarkupLanguage-2
+
+HypertextTransferProtocol-2 =  HypertextTransferProtocolTextItem-2 ContentType-2 HypertextTransferProtocolTextItem1-2 Accept-2 UserAgent-2 CacheControl-2 HypertextTransferProtocolTextItem2-2 Host-2 Connection-2 ContentLength-2 HypertextTransferProtocolTextItem3-2
+
+HypertextTransferProtocolTextItem-2 =   "POST /StressWSService/StressWS HTTP/1.1" %x0d0a ;POST /StressWSService/StressWS HTTP/1.1\r\n
+
+ContentType-2 =   "Content-type: text/xml;charset=utf-8" %x0d0a ;Content-type: text/xml;charset=utf-8\r\n
+
+HypertextTransferProtocolTextItem1-2 =   "Soapaction: " %x22 "http://stress.me.org/StressWS/iniziaConRequest" %x220d0a ;Soapaction: "http://stress.me.org/StressWS/iniziaConRequest"\r\n
+
+Accept-2 =   "Accept: text/xml, multipart/related" %x0d0a ;Accept: text/xml, multipart/related\r\n
+
+UserAgent-2 =   "User-Agent: JAX-WS RI 2.2-hudson-752-" %x0d0a ;User-Agent: JAX-WS RI 2.2-hudson-752-\r\n
+
+CacheControl-2 =   "Cache-Control: no-cache" %x0d0a ;Cache-Control: no-cache\r\n
+
+HypertextTransferProtocolTextItem2-2 =   "Pragma: no-cache" %x0d0a ;Pragma: no-cache\r\n
+
+Host-2 =   "Host: localhost:8080" %x0d0a ;Host: localhost:8080\r\n
+
+Connection-2 =   "Connection: keep-alive" %x0d0a ;Connection: keep-alive\r\n
+
+ContentLength-2 =   "Content-Length: 219" %x0d0a ;Content-Length: 219\r\n
+
+HypertextTransferProtocolTextItem3-2 =  %x0d0a ;\r\n
+
+eXtensibleMarkupLanguage-2 =  xmlXmlpiXml-2 Tag-2
+
+xmlXmlpiXml-2 =   "<?xml version='1.0' encoding='UTF-8'?>"  ;<?xml
+
+Tag-2 =   "<S:Envelope xmlns:S=" %x22 "http://schemas.xmlsoap.org/soap/envelope/" %x22 "><S:Body><ns2:iniziaCon xmlns:ns2=" %x22 "http://stress.me.org/" %x22 "><prefisso>P</prefisso></ns2:iniziaCon></S:Body></S:Envelope>"  ;<S:Envelope>
+
+
+

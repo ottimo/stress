@@ -1,0 +1,4 @@
+puppa = a a
+a = <%UDP_send%> "forza"
+;b = <%UDP_send%> "parma" 
+

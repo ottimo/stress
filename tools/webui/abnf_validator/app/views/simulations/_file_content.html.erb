@@ -1,0 +1,12 @@
+<h4 style="float:left;"><%= @file_name.split("/").last %></h4>
+
+<% output = @file_name.split("/") %>
+<span style="float:right; margin-right:20px; margin-top:15px;">
+	<%= button_to_remote "Back to files list", {:url => { :controller => :simulations, :action => :results_list, :output => output[1]}, :update => 	"right_column"} %>
+	<!-- removed becaouse not longer needed by stress output
+	<%= button_to_remote "Indent File", {:url => { :controller => :simulations, :action => :indent_output, :file => @file_name}, :update => 	"right_column"} %>
+	-->
+</span>
+<textarea readonly style="width:98%; height:80%;">
+	<%=h @file_content %>
+</textarea>

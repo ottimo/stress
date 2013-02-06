@@ -1,0 +1,31 @@
+root = packet-1 packet-2
+
+packet-1 = <%UDP_send%> DomainNameService-1
+
+DomainNameService-1 =  TransactionID-1 DomainNameServiceFlags-1 Questions-1 AnswerRRs-1 AuthorityRRs-1 AdditionalRRs-1 TextItem-1
+
+TransactionID-1 =  %xe836
+
+DomainNameServiceFlags-1 =  %x0100 ;Flags: 0x0100 (Standard query)
+
+Questions-1 =  %x0001
+
+AnswerRRs-1 =  %x0000
+
+AuthorityRRs-1 =  %x0000
+
+AdditionalRRs-1 =  %x0000
+
+TextItem-1 =  TextItemTextItem-1
+
+TextItemTextItem-1 =  Name-1 TextItemType-1 Class-1
+
+Name-1 =  %xff "www" %x04 "test" %x03 "com" %x00
+
+TextItemType-1 =  %x0001 ;Type: A (Host address)
+
+Class-1 =  %x0001
+
+
+packet-2 = <%UDP_read%> "response"
+

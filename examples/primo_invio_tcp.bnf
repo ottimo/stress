@@ -1,0 +1,8 @@
+INVIOTCP = prova prova2
+prova = "%STRESS_send%" "GET " "Puppa" seconda crnl crnl
+seconda = "me" terzo " al sushi" 
+terzo = "lo"
+prova2 = "%STRESS_read%"
+crnl = cr nl
+cr = %x0d
+nl = %x0a

@@ -1,0 +1,72 @@
+root = packet-1 packet-2  packet-4 packet-5 packet-6 packet-7 packet-8 packet-9 packet-10
+
+packet-1 = <%TCP_send%> JabberXMLMessaging-1
+
+JabberXMLMessaging-1 =  eXtensibleMarkupLanguage-1
+
+eXtensibleMarkupLanguage-1 =  xmlXmlpiXml-1
+
+xmlXmlpiXml-1 =   "<?xml version='1.0' ?>"  ;<?xml
+
+
+packet-2 = <%TCP_send%> JabberXMLMessaging-2
+
+JabberXMLMessaging-2 =  eXtensibleMarkupLanguage-2
+
+eXtensibleMarkupLanguage-2 =  Tag-2
+
+Tag-2 =   "<stream:stream to='localhost' xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' version='1.0'>"  ;<stream:stream>
+
+
+;packet-3 = <read or send> "JabberXMLMessaging-3"
+
+
+
+packet-4 = <%TCP_read%> "JabberXMLMessaging-4"
+
+
+packet-5 = <%TCP_send%> JabberXMLMessaging-5
+
+JabberXMLMessaging-5 =  eXtensibleMarkupLanguage-5
+
+eXtensibleMarkupLanguage-5 =  Tag-5
+
+Tag-5 =   "<auth xmlns='urn:ietf:params:xml:ns:xmpp-sasl' mechanism='DIGEST-MD5' xmlns:ga='http://www.google.com/talk/protocol/auth' ga:client-uses-full-bind-result='true'/>"  ;<auth/>
+
+
+packet-6 = <%TCP_read%> "challenge"
+
+
+
+packet-7 = <%TCP_send%> JabberXMLMessaging-7
+
+JabberXMLMessaging-7 =  eXtensibleMarkupLanguage-7
+
+eXtensibleMarkupLanguage-7 =  Tag-7
+
+Tag-7 =   "<response xmlns='urn:ietf:params:xml:ns:xmpp-sasl'>dXNlcm5hbWU9ImphYmJlcjEiLHJlYWxtPSJ" %x7f "sb2NhbGhvc3QiLG5vbmNlPSIxMzE4MTgwNDk0Iixjbm9uY2U9ImY0Mzc0MDQ2MTI2OTc4MzQ5NTk0MzM0MTlhIixuYz0wMDAwMDAwMSxxb3A9YXV0aCxkaWdlc3QtdXJpPSJ4bXBwL2xvY2FsaG9zdCIscmVzcG9uc2U9MzYyMzE3OWJkNGFkOTNmMjg4ODBmYWY3ZTRlYmRhYjgsY2hhcnNldD11dGYtOA==</response>"  ;<response>
+
+
+packet-8 = <%TCP_read%> JabberXMLMessaging-8
+
+JabberXMLMessaging-8 =  eXtensibleMarkupLanguage-8
+
+eXtensibleMarkupLanguage-8 =  Tag-8
+
+Tag-8 =   "<challenge xmlns='urn:ietf:params:xml:ns:xmpp-sasl'>cnNwYXV0aD1iZjExZjMxMDM0ODBmYWJiZTRhZDBhYjc5OGNjNzMzMA==</challenge>"  ;<challenge>
+
+
+packet-9 = <%TCP_send%> JabberXMLMessaging-9
+
+JabberXMLMessaging-9 =  eXtensibleMarkupLanguage-9
+
+eXtensibleMarkupLanguage-9 =  Tag-9
+
+Tag-9 =   "<response xmlns='urn:ietf:params:xml:ns:xmpp-sasl' />"  ;<response/>
+
+
+packet-10 = <%TCP_read%> "esito"
+
+
+
+

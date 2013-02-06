@@ -1,0 +1,615 @@
+<?xml version="1.0" ?>
+<testcase id="0" run="0">
+<state id="0" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="150" name="FailState" type="FailState">
+<value data="
+" />
+<sons>
+<state id="161" name="<%TCP_read%>" type="<%TCP_read%>">
+<value data="
+" />
+<sons>
+</sons>
+</state>
+<state id="162" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="163" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="164" name="ValueStringState" type="ValueStringState">
+<value data="
++OK Dovecot ready." />
+<sons>
+</sons>
+</state>
+<state id="165" name="ValueHexState" type="ValueHexState">
+<value data="
+0d0a" />
+<sons>
+</sons>
+</state>
+</sons>
+</state>
+</sons>
+</state>
+</sons>
+</state>
+<state id="151" name="ValueStringState" type="ValueStringState">
+<value data="
+CAPA0d0a" />
+<sons>
+<state id="166" name="<%TCP_send%>" type="<%TCP_send%>">
+<value data="
+" />
+<sons>
+</sons>
+</state>
+<state id="167" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="168" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="169" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="171" name="ValueStringState" type="ValueStringState">
+<value data="
+CAPA" />
+<sons>
+</sons>
+</state>
+</sons>
+</state>
+<state id="170" name="ValueHexState" type="ValueHexState">
+<value data="
+0d0a" />
+<sons>
+</sons>
+</state>
+</sons>
+</state>
+</sons>
+</state>
+</sons>
+</state>
+<state id="152" name="FailState" type="FailState">
+<value data="
+" />
+<sons>
+<state id="172" name="<%TCP_read%>" type="<%TCP_read%>">
+<value data="
+" />
+<sons>
+</sons>
+</state>
+<state id="173" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="174" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="184" name="ValueStringState" type="ValueStringState">
+<value data="
++OK" />
+<sons>
+</sons>
+</state>
+<state id="185" name="ValueHexState" type="ValueHexState">
+<value data="
+0d0a" />
+<sons>
+</sons>
+</state>
+</sons>
+</state>
+<state id="175" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="186" name="ValueStringState" type="ValueStringState">
+<value data="
+CAPA" />
+<sons>
+</sons>
+</state>
+<state id="187" name="ValueHexState" type="ValueHexState">
+<value data="
+0d0a" />
+<sons>
+</sons>
+</state>
+</sons>
+</state>
+<state id="176" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="188" name="ValueStringState" type="ValueStringState">
+<value data="
+TOP" />
+<sons>
+</sons>
+</state>
+<state id="189" name="ValueHexState" type="ValueHexState">
+<value data="
+0d0a" />
+<sons>
+</sons>
+</state>
+</sons>
+</state>
+<state id="177" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="190" name="ValueStringState" type="ValueStringState">
+<value data="
+UIDL" />
+<sons>
+</sons>
+</state>
+<state id="191" name="ValueHexState" type="ValueHexState">
+<value data="
+0d0a" />
+<sons>
+</sons>
+</state>
+</sons>
+</state>
+<state id="178" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="192" name="ValueStringState" type="ValueStringState">
+<value data="
+RESP-CODES" />
+<sons>
+</sons>
+</state>
+<state id="193" name="ValueHexState" type="ValueHexState">
+<value data="
+0d0a" />
+<sons>
+</sons>
+</state>
+</sons>
+</state>
+<state id="179" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="194" name="ValueStringState" type="ValueStringState">
+<value data="
+PIPELINING" />
+<sons>
+</sons>
+</state>
+<state id="195" name="ValueHexState" type="ValueHexState">
+<value data="
+0d0a" />
+<sons>
+</sons>
+</state>
+</sons>
+</state>
+<state id="180" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="196" name="ValueStringState" type="ValueStringState">
+<value data="
+STLS" />
+<sons>
+</sons>
+</state>
+<state id="197" name="ValueHexState" type="ValueHexState">
+<value data="
+0d0a" />
+<sons>
+</sons>
+</state>
+</sons>
+</state>
+<state id="181" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="198" name="ValueStringState" type="ValueStringState">
+<value data="
+USER" />
+<sons>
+</sons>
+</state>
+<state id="199" name="ValueHexState" type="ValueHexState">
+<value data="
+0d0a" />
+<sons>
+</sons>
+</state>
+</sons>
+</state>
+<state id="182" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="200" name="ValueStringState" type="ValueStringState">
+<value data="
+SASL PLAIN" />
+<sons>
+</sons>
+</state>
+<state id="201" name="ValueHexState" type="ValueHexState">
+<value data="
+0d0a" />
+<sons>
+</sons>
+</state>
+</sons>
+</state>
+<state id="183" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="202" name="ValueStringState" type="ValueStringState">
+<value data="
+." />
+<sons>
+</sons>
+</state>
+<state id="203" name="ValueHexState" type="ValueHexState">
+<value data="
+0d0a" />
+<sons>
+</sons>
+</state>
+</sons>
+</state>
+</sons>
+</state>
+</sons>
+</state>
+<state id="153" name="ValueStringState" type="ValueStringState">
+<value data="
+User guest0d0a" />
+<sons>
+<state id="204" name="<%TCP_send%>" type="<%TCP_send%>">
+<value data="
+" />
+<sons>
+</sons>
+</state>
+<state id="205" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="206" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="207" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="209" name="ValueStringState" type="ValueStringState">
+<value data="
+User guest" />
+<sons>
+</sons>
+</state>
+</sons>
+</state>
+<state id="208" name="ValueHexState" type="ValueHexState">
+<value data="
+0d0a" />
+<sons>
+</sons>
+</state>
+</sons>
+</state>
+</sons>
+</state>
+</sons>
+</state>
+<state id="154" name="FailState" type="FailState">
+<value data="
+" />
+<sons>
+<state id="210" name="<%TCP_read%>" type="<%TCP_read%>">
+<value data="
+" />
+<sons>
+</sons>
+</state>
+<state id="211" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="212" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="213" name="ValueStringState" type="ValueStringState">
+<value data="
++OK" />
+<sons>
+</sons>
+</state>
+<state id="214" name="ValueHexState" type="ValueHexState">
+<value data="
+0d0a" />
+<sons>
+</sons>
+</state>
+</sons>
+</state>
+</sons>
+</state>
+</sons>
+</state>
+<state id="155" name="ValueStringState" type="ValueStringState">
+<value data="
+Pass guest0d0a" />
+<sons>
+<state id="215" name="<%TCP_send%>" type="<%TCP_send%>">
+<value data="
+" />
+<sons>
+</sons>
+</state>
+<state id="216" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="217" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="218" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="220" name="ValueStringState" type="ValueStringState">
+<value data="
+Pass guest" />
+<sons>
+</sons>
+</state>
+</sons>
+</state>
+<state id="219" name="ValueHexState" type="ValueHexState">
+<value data="
+0d0a" />
+<sons>
+</sons>
+</state>
+</sons>
+</state>
+</sons>
+</state>
+</sons>
+</state>
+<state id="156" name="FailState" type="FailState">
+<value data="
+" />
+<sons>
+<state id="221" name="<%TCP_read%>" type="<%TCP_read%>">
+<value data="
+" />
+<sons>
+</sons>
+</state>
+<state id="222" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="223" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="224" name="ValueStringState" type="ValueStringState">
+<value data="
++OK Logged in." />
+<sons>
+</sons>
+</state>
+<state id="225" name="ValueHexState" type="ValueHexState">
+<value data="
+0d0a" />
+<sons>
+</sons>
+</state>
+</sons>
+</state>
+</sons>
+</state>
+</sons>
+</state>
+<state id="157" name="ValueStringState" type="ValueStringState">
+<value data="
+List0d0a" />
+<sons>
+<state id="226" name="<%TCP_send%>" type="<%TCP_send%>">
+<value data="
+" />
+<sons>
+</sons>
+</state>
+<state id="227" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="228" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="229" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="231" name="ValueStringState" type="ValueStringState">
+<value data="
+List" />
+<sons>
+</sons>
+</state>
+</sons>
+</state>
+<state id="230" name="ValueHexState" type="ValueHexState">
+<value data="
+0d0a" />
+<sons>
+</sons>
+</state>
+</sons>
+</state>
+</sons>
+</state>
+</sons>
+</state>
+<state id="158" name="FailState" type="FailState">
+<value data="
+" />
+<sons>
+<state id="232" name="<%TCP_read%>" type="<%TCP_read%>">
+<value data="
+" />
+<sons>
+</sons>
+</state>
+<state id="233" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="234" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="236" name="ValueStringState" type="ValueStringState">
+<value data="
++OK 0 messages:" />
+<sons>
+</sons>
+</state>
+<state id="237" name="ValueHexState" type="ValueHexState">
+<value data="
+0d0a" />
+<sons>
+</sons>
+</state>
+</sons>
+</state>
+<state id="235" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="238" name="ValueStringState" type="ValueStringState">
+<value data="
+." />
+<sons>
+</sons>
+</state>
+<state id="239" name="ValueHexState" type="ValueHexState">
+<value data="
+0d0a" />
+<sons>
+</sons>
+</state>
+</sons>
+</state>
+</sons>
+</state>
+</sons>
+</state>
+<state id="159" name="ValueStringState" type="ValueStringState">
+<value data="
+Quit0d0a" />
+<sons>
+<state id="240" name="<%TCP_send%>" type="<%TCP_send%>">
+<value data="
+" />
+<sons>
+</sons>
+</state>
+<state id="241" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="242" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="243" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="245" name="ValueStringState" type="ValueStringState">
+<value data="
+Quit" />
+<sons>
+</sons>
+</state>
+</sons>
+</state>
+<state id="244" name="ValueHexState" type="ValueHexState">
+<value data="
+0d0a" />
+<sons>
+</sons>
+</state>
+</sons>
+</state>
+</sons>
+</state>
+</sons>
+</state>
+<state id="160" name="FailState" type="FailState">
+<value data="
+" />
+<sons>
+<state id="246" name="<%TCP_read%>" type="<%TCP_read%>">
+<value data="
+" />
+<sons>
+</sons>
+</state>
+<state id="247" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="248" name="OKState" type="OKState">
+<value data="
+" />
+<sons>
+<state id="249" name="ValueStringState" type="ValueStringState">
+<value data="
++OK Logging out." />
+<sons>
+</sons>
+</state>
+<state id="250" name="ValueHexState" type="ValueHexState">
+<value data="
+0d0a" />
+<sons>
+</sons>
+</state>
+</sons>
+</state>
+</sons>
+</state>
+</sons>
+</state>
+</sons>
+</state>
+</testcase>

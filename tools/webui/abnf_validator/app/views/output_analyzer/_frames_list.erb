@@ -1,0 +1,14 @@
+<ul>
+Testcase ID: <%= @testcase.id_anomaly %> RUN: <%= @testcase.run %>
+<br>
+<% @testcase.frames.each do |frame| %>
+<li>
+<%= frame.printHTML %>
+<span id=<%= "frame_content"+frame.position.to_s %>>
+<%= link_to_remote "Content", 
+	{:url => { :controller => :output_analyzer, :action => :get_frame_content, :frame_id =>frame.id}, 
+	:update => "frame_content"+frame.position.to_s} %> 
+</span>
+</li>
+<% end %>
+</ul>

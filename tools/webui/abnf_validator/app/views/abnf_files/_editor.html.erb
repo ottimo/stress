@@ -1,0 +1,25 @@
+<span style="margin-left:33px;"><%= @file.name %>:</span>
+<% form_remote_tag :url => {:controller => :abnf_files, :action => :modify_or_reload_content, :file_id => @file.id}, :update => "editor", :complete => "setRowNumber(); notify();" do %>
+
+	<div style="margin-bottom:10px; margin-top:10px;">
+		<textarea readonly="true" id="lines"></textarea>
+		<textarea id="editor_textarea" name="editor_textarea" onscroll="sync();" wrap=OFF><%= @file.content %></textarea>
+	</div>
+
+	<span style="float:left; margin-left:33px;">
+		<button onclick="validate_abnf(); return false;">Validate abnf</button>
+		<%= submit_tag "Save changes", :disabled => @permissions != "w" %>
+	</span>
+<% end %>
+
+<span style="float:right;margin-right:4%;">
+	<span style="float:left;"><%= button_to "export", {:action => "export", :file_name => @file.name, :content => @file.content} %></span>
+	<span style="float:right;"><%= button_to_remote "Abandon changes", :url => {:controller => :abnf_files, :action => :modify_or_reload_content, :file_id => @file.id}, :confirm => "This will discard all changes!", :update => "editor", :complete => "setRowNumber(); notify();" %></span>
+</span>
+
+<script>
+$(document).bind('keydown', 'Alt+x', function(){
+	validate_abnf(); 
+	}
+);
+</script>

@@ -1,0 +1,101 @@
+<div id="admin">
+<% if session[:migration] %>
+	<% session[:migration] = false %>
+	<div style="border: 1px dashed red; padding:10px; width:578px; margin-bottom:20px;" id="migration">
+		<span style="float:left;">Plugin needs database migration to work, would you like to run it now?</span>
+		<span style="float:right;"><%= button_to "Yes", {:action => "run_migration"} %></span>
+		<span style="float:right; margin-right:10px;"><button onclick="$('#migration').remove();">No, thanks!</button></span>
+		<div style="clear:both;"></div>
+	</div>
+<% end %>
+
+
+Please select an action:<br/><br/>
+<p id="notice" style="color:green; float:right; margin-right:30px;"><%= flash[:notice] %></p>
+
+<h2 onclick="my_accordion('install', this)" class="accordion_h2">&bull; Install a plugin</h2>
+<div id="install" class="accordion">
+<% form_tag ("upload_plugin", :multipart => true) do %>
+	Select zip file: 
+	<%= file_field_tag 'upload' %>
+	<%= submit_tag "Install" %>
+<% end %>
+</div>
+
+
+<h2 onclick="my_accordion('plugins_list')" class="accordion_h2">&bull; Intalled plugin's list</h2>
+<div id="plugins_list" class="accordion">
+<table border="1px" cellpadding="10px">
+	<th>Name</th><th>Author</th><th>Description</th><th>Del</th>
+	<% if @plugins.empty? %>
+		<tr>
+			<td colspan="4">No installed plugin founded</td>
+		</tr>
+	<% else %>
+		<% @plugins.each do |p| %>
+			<tr>
+				<td><%= p.plugin["nome"] %></td>
+				<td><%= p.plugin["autore"] %></td>
+				<td><%= p.plugin["descrizione"] %></td>
+				<td><%= button_to "X", {:action => "delete_plugin", :plugin_xml_file_name => p.xml_file}, :confirm => "Are you sure?" %></td>
+			</tr>
+		<% end %>
+	<% end %>
+</table>
+</div>
+
+
+<h2 onclick="my_accordion('users_list')" class="accordion_h2">&bull; User's list</h2>
+<div id="users_list" class="accordion">
+<table border="1px" cellpadding="10px">
+	<th>id</th><th>Username</th><th>Admin?</th><th>Del</th>
+	<% if !@users %>
+		<tr>
+			<td colspan="4">Non ci sono utenti nel database!</td>
+		</tr>
+	<% else %>
+		<% for user in @users %>
+			<tr>
+				<td><%= user.id %></td>
+				<td><%= user.username %></td>
+				<td><%= user.is_admin %></td>
+				<td><%= button_to "X", { :action => "delete_user", :id => user.id }, :confirm => "Are you sure?" %></td>
+			</tr>
+		<% end %>
+	<% end %>
+</table>
+</div>
+
+
+<h2 onclick="my_accordion('new_user')" class="accordion_h2">&bull; New User</h2>
+<div id="new_user" class="accordion">
+<% form_for @user, :url => {:action => "create" } do |f| %>
+<%= f.error_messages %>
+<table>
+	<tr>
+		<td><%= f.label :username %>: </td>
+    <td><%= f.text_field :username %></td>
+	</tr>
+	<tr>
+  	<td><%= f.label :password %>: </td>
+    <td><%= f.password_field :password %></td>
+	</tr>
+	<tr>
+  	<td><%= f.label :is_admin %>?: </td>
+    <td><%= f.check_box :is_admin %></td>
+	</tr>
+	<tr>
+		<td>
+		</td>
+		<td>
+			<%= f.submit -%>
+		</td>
+	</tr>
+  	<% end %>
+</table>
+</div>
+
+</div>
+<script>
+setTimeout(function(){ $("#notice").fadeOut("slow") }, 3000);
+</script>

@@ -1,0 +1,11 @@
+<% form_remote_tag :url => {:controller => :abnf_files, :action => :create_file }, :update => "actions", :success => "notify(); update_file_list();" do %>
+	<label for="new_file">Enter file name:</label><br/>
+	<%= text_field_tag :file_name %><br/>
+	<select id="library_id" name="library_id">
+			<% for l in @libraries %>
+				<option value="<%= l.id %>"><%= l.name %></option>
+			<% end %>
+		</select>
+	<%= submit_tag "Create!" %><br/>
+<% end %>
+

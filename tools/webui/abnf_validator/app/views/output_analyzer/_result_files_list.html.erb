@@ -1,0 +1,11 @@
+<h2 style="float:left;">Results File lists</h2>
+<div style="clear:both;"></div>
+<ul>
+<% @files.each do |f| %>
+	<li><%= link_to_remote (f.split("/").last), 
+						   {:url => { :controller => :simulations, :action => :show_file_content, :file => f},
+						   :update => "right_column", 
+						   :method => :post} %></li>
+	<%= f %>
+<% end %>
+</ul>

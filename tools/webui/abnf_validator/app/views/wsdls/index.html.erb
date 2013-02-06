@@ -1,0 +1,94 @@
+<div id="left_column">
+Insert wsdl file URI:
+<% form_remote_tag :url => {:controller => :wsdls, :action => :get_wsdl_methods}, :update => "wsdl_methods_container", :before => "clear_content();", :success => "notify(); onchange_bind();" do %>
+	<%= text_field_tag :wsdl_uri %>
+	<%= submit_tag "Get Wsdl" %>
+<% end %>
+<%= button_to_remote "Get a default one", :url => {:controller => :wsdls, :action => :get_wsdl_methods}, :update => "wsdl_methods_container", :before => "clear_content();", :success => "notify(); onchange_bind();" %>
+</div>
+
+<div id="right_column">
+	<h3>Wsdl Methods and Args</h3>
+	<div id="wsdl_methods_container">
+	</div>
+	<% form_remote_tag :url => {:controller => :wsdls, :action => :save_abnf_from_wsdl}, :success => "notify();" do %>
+		<div id="wsdl_content">
+		</div>
+		<br/><br/>
+		<table>
+			<tr>
+				<td>File name:</td>
+				<td><%= text_field_tag :file_name %></td>
+			</tr>
+			<tr>
+				<td>Library:</td>
+				<td>
+					<%= select_tag "library_id", options_from_collection_for_select(@libraries, "id", "name") %>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td><%= submit_tag "Save!", :id => "save_file", :disabled => true %></td>
+			</tr>
+		</table>
+	<% end %>
+</div>
+
+
+<script>
+	var counter = 0;
+	
+	function clear_content(){
+		counter = 0;
+		$("#wsdl_methods_container").empty();
+		$("#wsdl_content").empty();
+	}
+	
+	function add_method(){
+		$.ajax({
+			type: 'post',
+			url: '/wsdls/render_method_selection/',
+			data: ({method : this.value, add : true}),
+			dataType: 'html',
+			success: function(data) {
+				$('#wsdl_methods_container').append(data);
+				counter += 1;
+			},
+			complete: function(){
+				onchange_bind();
+			}
+		});
+	}
+	
+	function delete_method(id){
+		/*$.ajax({
+			type: 'post',
+			url: '/wsdls/decrease_method_counter/',
+			dataType: 'html'
+		});*/
+		$("#select_container_"+id).remove();
+		$("#content_"+id).remove();
+	}
+		
+	
+	function onchange_bind(){
+		$("#wsdl_methods_"+counter).bind("change", function(){
+				$.ajax({
+					type: 'post',
+					url: '/wsdls/get_wsdl_content/',
+					data: ({method : this.value}),
+					dataType: 'html',
+					success: function(data){
+						if($("#content_"+counter).length != 0){
+							$("#content_"+counter).html(data);
+						}else{
+							content = "<div id='content_"+counter+"'>"+data+"</div>";
+							$("#wsdl_content").append(content);
+							$("#save_file").removeAttr("disabled");
+						}
+					}
+				});
+			}
+		);
+	}
+</script>

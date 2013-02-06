@@ -1,0 +1,27 @@
+<table width="98%">
+	<th>Filename</th><th>Output</th><th>Launched</th><th>Clean</th>
+	<% if @simulations.length != 0 %>
+		<% for s in @simulations -%>
+			<tr class="<%= cycle('odd', 'even') %>" id="<%= s.id %>">
+				<td><%= s.filename %></td>
+				<td>
+					<%= link_to_remote 	s.output,
+										{:url => { :controller => :output_analyzer, :action => :select_simulation, :output => s.output},
+										:before => "loading('right_column')",
+										:update => "right_column"}
+					%>
+				</td>
+				<td><%= s.created_at.to_s(:my_date) %></td>
+				<td>
+				<%= link_to_remote 	"Clean Cache",
+										{:url => { :controller => :output_analyzer, :action => :clean_cache, :output => s.output},
+										:before => "loading('right_column')",
+										:update => "right_column", :confirm => ('Clean all data cached? You\'ll have to parse all xml files'), :success => "notify()"}
+					%>
+				</td>
+			</tr>
+		<% end -%>
+	<% else %>
+		<tr class="odd"><td colspan="8">No simulation completed!</td></tr>
+	<% end %>
+</table>

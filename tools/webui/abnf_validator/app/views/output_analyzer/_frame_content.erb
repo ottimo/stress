@@ -1,0 +1,31 @@
+<% data =  @frame.data unless @frame.data == nil %>
+
+<% 
+@frame.faults.each do |f|
+				id = data.index(f.value)
+				data.insert(id+f.value.size, "</b>")
+				data.insert(id, "<b>")
+end %>
+
+<%= data %>
+<br>
+
+<% unless @frame.faults.size == 0 %>
+<br>
+<div>
+
+<b>Injected faults:</b>
+<ul>
+<% @frame.faults.each do |f| %>
+<li><%= f.value %> 
+	<% if f.value.size == 0 %>
+		Empty string
+	<% end %>
+</li>
+<% end %>
+</ul>
+</div>
+<br>
+<% end %>
+
+	

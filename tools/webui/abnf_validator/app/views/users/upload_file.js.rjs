@@ -1,0 +1,2 @@
+page.replace_html "actions", :partial => "upload_file"
+#page.visual_effect :toggle_slide, 'actions'

@@ -1,0 +1,9 @@
+<module name="wsdl parser plugin">
+  <nome>Wsdl parser</nome>
+  <tab_text>Wsdl</tab_text>
+  <suffix>wsdls</suffix>
+  <autore>Marco Sangiorgi</autore>
+  <descrizione>Plugin that generates an abnf files from a given soap described with wsdl, based on SAVON</descrizione>
+  <extra_file>lib/easysoap.rb</extra_file>
+</module>
+

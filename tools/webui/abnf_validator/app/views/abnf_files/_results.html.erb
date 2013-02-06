@@ -1,0 +1,9 @@
+<% if @result.length == 0 %>
+	<% @msg = "Parsing completed with no errors!" %>
+<% else %>
+	<% @msg = "Parsing failed with those errors: <br/>" %>
+	<% @result.gsub!("ERROR: script/temp:", "<br/>Line: ") %>
+<% end %>
+<strong>Results:</strong>
+<%= @msg %>
+<%= @result %>

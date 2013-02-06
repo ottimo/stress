@@ -1,0 +1,55 @@
+<style>
+div.box{
+	height:650px;
+    background-color:#f0f0f0;
+    padding:1px 0
+}
+
+div.box-inner{
+	height: 600px;
+	overflow:auto;
+    margin:25px 24px 0;
+    padding-right:2px
+}
+div.frames-box{
+	width:850px;
+    background-color:#f0f0f0;
+    padding:1px 0
+}
+div.frames-box-inner{
+	width: 800px;
+	overflow:auto;
+    margin:25px 24px 0;
+    padding-right:2px
+}
+</style>
+
+
+<table width="98%">
+	<th style="text-align:center" width="20%">Testcase</th>
+	<th style="text-align:center" width="80%">Frame</th>
+	<tr>
+	<td id="testcase_name">
+	<div class ="box">
+	<div class ="box-inner">
+	<ul>
+	<% @simulation.testcases.each do |testcase| %>
+
+	<li><%= link_to_remote testcase.printHTML,
+							{:url => { :controller => :output_analyzer, :action => :get_frames_list, :output => @simulation_selected, :testcase_id =>testcase.id}, :update => "frames"} %></li>
+	<% end %>
+	</ul>
+	</div>
+	</div>
+	</td>
+	<td>
+	<div  class="frames-box">
+	<div id="frames" class="frames-box-inner">
+		<% if @testcase != nil %>
+		<%= render :partial => 'frames_list' %>
+		<% end %>
+	</div>
+	</div>
+	</td>
+	</tr>
+</table>

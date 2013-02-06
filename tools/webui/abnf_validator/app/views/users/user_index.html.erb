@@ -1,0 +1,23 @@
+<div id="left_column">
+
+	<%= button_to_remote "New Lib", :url => { :controller => :libraries, :action => :new_library }, :update => "actions" %>
+	<%= button_to_remote "New File", :url => { :controller => :abnf_files, :action => :new_file }, :update => "actions" %>
+	<%= button_to_remote "Import", :url => { :controller => :abnf_files, :action => :import_file }, :update  => "actions" %>
+	<%= button_to_remote "Del Lib", :url => { :controller => :libraries, :action => :delete }, :update  => "actions" %>
+	<!--<%= button_to_remote "Upload File", :url => { :action => :upload_file } %>-->
+	
+	<div id="actions">
+	<%= render(:partial => "libraries/new_library") %>
+	</div>
+
+</div>
+
+<div id="right_column">
+<br/>
+<div id="library_select_div">
+	<%= render :partial => "libraries_list" %>
+</div><br/>
+	<div id="files_list">
+		<%= render :partial => "files_list" %>
+	</div>
+</div>

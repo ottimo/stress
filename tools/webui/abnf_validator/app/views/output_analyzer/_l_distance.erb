@@ -1,0 +1,24 @@
+<table width ="98%">
+<tr>
+<td style=" vertical-align: top;">
+<div id="l_distance_menu">
+<ul>
+<% @read_frames.each do |rf| %>
+<li>
+<%= link_to_remote rf.position.to_s+"° Frame",
+							{:url => { :controller => :output_analyzer, :action => :get_l_distance_graph, :output => @simulation_selected, :frames => rf.position}, 
+							:before => "loading('l_distance_graph')",
+							:update => "l_distance_graph"} %> 
+</li>
+<% end %>
+</ul>
+</div>
+
+</td>
+<td>
+
+<div id="l_distance_graph"></div>
+
+</td>
+</tr>
+</table>

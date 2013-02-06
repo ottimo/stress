@@ -1,0 +1,235 @@
+html, body{
+	height:100%;
+	width:100%;
+	margin:0px auto;
+	color:#222;
+}
+
+th{
+	text-align:left;
+	padding-bottom:5px;
+	padding-left:10px;fi
+}
+
+td{
+	padding-left:10px;
+	min-width:40px;
+}
+
+.odd{
+	background-color:#cccccc;
+}
+
+.even{
+	background-color:#ffffff;
+}
+
+img{
+	border:none;
+}
+
+#flash_messages{
+	display:none;
+	color:#000;
+	opacity:0.45;
+	position:absolute;
+	top:0px;
+	left:40%;
+	border-top:none;
+	-moz-border-radius-bottomleft: 10px;
+	-moz-border-radius-bottomright: 10px;
+	-webkit-border-bottom-left-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
+}	
+
+#header{
+	width:100%;
+	height:136px;
+	background:url("/images/sfondo_banner.jpg");
+/*	min-height:20%;*/
+}
+
+#scritta{
+	width:600px;
+	height:134px;
+	background:url("/images/scritta.jpg");
+	float:left;
+}
+
+#benvenuto{
+	float:right;
+	margin-top:10px;
+	margin-right:5px;
+	color: #ccc;
+	font-weight:bold;
+	font-size:x-large;
+}	
+
+#ni2s3{
+	 width:580px;
+	 margin: 0px auto;
+	 margin-top:20px;
+}
+	
+#login-form{
+	height:200px;
+	width:580px; 
+	background:url("/images/key.jpg") no-repeat bottom right;
+	text-shadow: #999 1px 1px 1px;
+}
+
+#tabs{
+	position:absolute;
+	top:80px;
+	right:10px;
+	font-weight:bold;
+	font-size:15px;
+	line-height:100%;
+}
+
+#tabs ul{
+	list-style-type:none;
+}
+
+#tabs li{
+	float:left;
+	width:121px;
+	height:38px;
+	margin-left:20px;
+	background-color:white;
+	-moz-border-radius:10px 10px 0px 0px;
+	text-align:center;
+	padding-top:5px;
+}
+
+#tabs a{
+	display:block;
+	color: #444;
+	text-decoration:none;
+}
+
+#tabs a:hover{
+	color:#000;
+}
+
+.active_tab{
+	background-color:yellow;
+}
+
+#corpo{
+	width:100%;
+}
+
+#login{
+	margin:20px;
+	margin-top:-2px;
+}
+
+#admin{
+	margin:20px;
+	margin-right:0px;
+	height:100%;
+	overflow:auto;
+}
+
+#left_column{
+	padding-left:1%;
+	padding-right:1%;
+	width:23%;
+	background-color:#ccc;
+	float:left;
+	height:100%;
+	overflow:auto;
+	border-right:2px solid #C3E076;
+	padding-top:20px;
+}
+
+#actions{
+	margin-top:20px;
+}
+
+#right_column{
+	width:74%;
+	float:right;
+	background-color:white;
+	height:100%;
+	overflow:auto;
+	margin-top:15px;
+}
+
+#files_list{
+	margin-top:10px;
+	margin-right: 10px;
+}
+
+#files_list a{
+	color:#222;
+	text-decoration:none;
+}
+
+#files_list a:hover{
+	text-decoration:underline;
+}
+
+#editor{
+	width:98%;
+	margin:15px auto;
+}
+
+#lines{
+	width:40px;
+	overflow:hidden;
+	float:left;
+	background-color:white;
+	border:3px solid white;
+	text-align:right;
+	padding-right:2px;
+	color:#aaa;
+}
+
+#editor_textarea{
+	width:92%;
+	overflow:auto;
+}
+
+#console{
+	position:absolute;
+	bottom:23px;
+	border-top:2px solid #C3E076;
+	width:100%;
+	height:250px;
+	background-color:white;
+	display:none;
+}
+
+#console-text{
+	clear:both;
+	height:160px;
+	padding:10px;
+	padding-top:0px;
+	overflow:auto;
+}
+
+.accordion{
+	display:none;
+}
+
+h2.accordion_h2{
+	margin-top:5px;
+	font-size:14px;	
+	display:block;
+	cursor:pointer;
+}
+
+#footer{
+	height:18px;
+	width:100%;
+	background:url("/images/sfondo_footer.jpg");
+	clear:both;
+	color:#ccc;
+	font-size:10px;
+	text-align:center;
+	padding-top:7px;
+	overflow:hidden;
+}
+

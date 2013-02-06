@@ -1,0 +1,7 @@
+Show:
+<select id="library_select" onchange="update_file_list()">
+	<option value="all">All libraries</option>
+	<% for l in @libraries %>
+		<option value="<%= l.id %>"><%= l.name %></option>
+	<% end %>
+</select>

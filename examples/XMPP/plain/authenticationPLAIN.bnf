@@ -1,0 +1,49 @@
+root = packet-1 packet-2 packet-4 packet-5 packet-6 
+
+packet-1 = <%TCP_send%> JabberXMLMessaging-1
+
+JabberXMLMessaging-1 =  eXtensibleMarkupLanguage-1
+
+eXtensibleMarkupLanguage-1 =  xmlXmlpiXml-1
+
+xmlXmlpiXml-1 =  "<?xml version='1.0' ?>" ;<?xml
+
+
+packet-2 = <%TCP_send%> JabberXMLMessaging-2
+
+JabberXMLMessaging-2 =  eXtensibleMarkupLanguage-2
+
+eXtensibleMarkupLanguage-2 =  Tag-2
+
+Tag-2 =  "<stream:stream to='localhost' xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' version='1.0'>" ;<stream:stream>
+
+
+;packet-3 = <%TCP_read%> "JabberXMLMessaging-3"
+
+;JabberXMLMessaging-3 =  eXtensibleMarkupLanguage-3
+
+;eXtensibleMarkupLanguage-3 =  xmlXmlpiXml-3 Tag-3
+
+;xmlXmlpiXml-3 =  "<?xml version='1.0'?>" ;<?xml
+
+;Tag-3 =  "<stream:stream xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams' id='3203255384' from='localhost' version='1.0' xml:lang='en'>" ;<stream:stream>
+
+
+packet-4 = <%TCP_read%> "prova"
+
+
+packet-5 = <%TCP_send%> JabberXMLMessaging-5
+
+JabberXMLMessaging-5 =  eXtensibleMarkupLanguage-5
+
+eXtensibleMarkupLanguage-5 =  Tag-5
+
+Tag-5 =  "<auth xmlns='urn:ietf:params:xml:ns:xmpp-sasl' mechanism='PLAIN' >" Auth-Value "</auth>" ;<auth/>
+ 
+Auth-Value = %x41477068596d4a6c636a4541633352795a584e7a 
+
+;Auth-Value = <%Base64Encode%> ( %00 "jabber1" %00 "stress")
+
+
+packet-6 = <%TCP_read%> "prova"
+

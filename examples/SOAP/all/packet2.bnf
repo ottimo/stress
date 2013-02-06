@@ -1,0 +1,27 @@
+packet = <read or send> HypertextTransferProtocol eXtensibleMarkupLanguage
+
+HypertextTransferProtocol =  HypertextTransferProtocolTextItem UserAgent Host ContentType HypertextTransferProtocolTextItem1 ContentLength Connection HypertextTransferProtocolTextItem2
+
+HypertextTransferProtocolTextItem =   "POST /xml/soapresponder.wsdl HTTP/1.1" %x0d0a ;POST /xml/soapresponder.wsdl HTTP/1.1\r\n
+
+UserAgent =   "User-Agent: Mac OS X; WebServicesCore (357)" %x0d0a ;User-Agent: Mac OS X; WebServicesCore (357)\r\n
+
+Host =   "Host: soapclient.com" %x0d0a ;Host: soapclient.com\r\n
+
+ContentType =   "Content-Type: text/xml" %x0d0a ;Content-Type: text/xml\r\n
+
+HypertextTransferProtocolTextItem1 =   "Soapaction: http://www.SoapClient.com/SoapObject" %x0d0a ;Soapaction: http://www.SoapClient.com/SoapObject\r\n
+
+ContentLength =   "Content-Length: 673" %x0d0a ;Content-Length: 673\r\n
+
+Connection =   "Connection: close" %x0d0a ;Connection: close\r\n
+
+HypertextTransferProtocolTextItem2 =  %x0d0a ;\r\n
+
+eXtensibleMarkupLanguage =  xmlXmlpiXml Tag
+
+xmlXmlpiXml =   "<?xml version="1.0" encoding="utf-8"?>"  ;<?xml
+
+Tag =   "<SOAP-ENV:Envelope" %x0d0a "    xmlns:xsd="http://www.w3.org/2001/XMLSchema"" %x0d0a "    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"" %x0d0a "    xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"" %x0d0a "    SOAP-ENV:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"" %x0d0a "    xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">" %x0d0a "      <SOAP-ENV:Body>" %x0d0a "        <m:Method1 xmlns:m="http://www.SoapClient.com/xml/SoapResponder.wsdl">" %x0d0a "          <bstrParam1 xsi:type="xsd:string">ciao</bstrParam1>" %x0d0a "          <bstrParam2 xsi:type="xsd:string">rosi</bstrParam2>" %x0d0a "        </m:Method1>" %x0d0a "      </SOAP-ENV:Body>" %x0d0a "    </SOAP-ENV:Envelope>"  ;<SOAP-ENV:Envelope>
+
+

@@ -1,0 +1,100 @@
+root = packet-1 packet-2 packet-3 packet-4 packet-5 packet-6 packet-7 packet-8 packet-9 packet-10 packet-11
+
+packet-1 = <%TCP_read%> PostOfficeProtocol-1
+
+PostOfficeProtocol-1 =  Response-1
+
+Response-1 =   "+OK Dovecot ready." %x0d0a ;+OK Dovecot ready.\r\n
+
+
+packet-2 = <%TCP_send%> PostOfficeProtocol-2
+
+PostOfficeProtocol-2 =  Request-2
+
+Request-2 =   "CAPA" %x0d0a ;CAPA\r\n
+
+
+packet-3 = <%TCP_read%> PostOfficeProtocol-3
+
+PostOfficeProtocol-3 =  Response-3 Data-3 PostOfficeProtocolData-3 PostOfficeProtocolData1-3 PostOfficeProtocolData2-3 PostOfficeProtocolData3-3 PostOfficeProtocolData4-3 PostOfficeProtocolData5-3 PostOfficeProtocolData6-3 PostOfficeProtocolData7-3
+
+Response-3 =   "+OK" %x0d0a ;+OK\r\n
+
+Data-3 =   "CAPA" %x0d0a ;CAPA\r\n
+
+PostOfficeProtocolData-3 =   "TOP" %x0d0a ;TOP\r\n
+
+PostOfficeProtocolData1-3 =   "UIDL" %x0d0a ;UIDL\r\n
+
+PostOfficeProtocolData2-3 =   "RESP-CODES" %x0d0a ;RESP-CODES\r\n
+
+PostOfficeProtocolData3-3 =   "PIPELINING" %x0d0a ;PIPELINING\r\n
+
+PostOfficeProtocolData4-3 =   "STLS" %x0d0a ;STLS\r\n
+
+PostOfficeProtocolData5-3 =   "USER" %x0d0a ;USER\r\n
+
+PostOfficeProtocolData6-3 =   "SASL PLAIN" %x0d0a ;SASL PLAIN\r\n
+
+PostOfficeProtocolData7-3 =   "." %x0d0a ;.\r\n
+
+
+packet-4 = <%TCP_send%> PostOfficeProtocol-4
+
+PostOfficeProtocol-4 =  Request-4
+
+Request-4 =   "User guest" %x0d0a ;User guest\r\n
+
+
+packet-5 = <%TCP_read%> PostOfficeProtocol-5
+
+PostOfficeProtocol-5 =  Response-5
+
+Response-5 =   "+OK" %x0d0a ;+OK\r\n
+
+
+packet-6 = <%TCP_send%> PostOfficeProtocol-6
+
+PostOfficeProtocol-6 =  Request-6
+
+Request-6 =   "Pass guest" %x0d0a ;Pass guest\r\n
+
+
+packet-7 = <%TCP_read%> PostOfficeProtocol-7
+
+PostOfficeProtocol-7 =  Response-7
+
+Response-7 =   "+OK Logged in." %x0d0a ;+OK Logged in.\r\n
+
+
+packet-8 = <%TCP_send%> PostOfficeProtocol-8
+
+PostOfficeProtocol-8 =  Request-8
+
+Request-8 =   "List" %x0d0a ;List\r\n
+
+
+packet-9 = <%TCP_read%> PostOfficeProtocol-9
+
+PostOfficeProtocol-9 =  Response-9 Data-9
+
+Response-9 =   "+OK 0 messages:" %x0d0a ;+OK 0 messages:\r\n
+
+Data-9 =   "." %x0d0a ;.\r\n
+
+
+packet-10 = <%TCP_send%> PostOfficeProtocol-10
+
+PostOfficeProtocol-10 =  Request-10
+
+Request-10 =   "Quit" %x0d0a ;Quit\r\n
+
+
+packet-11 = <%TCP_read%> PostOfficeProtocol-11
+
+PostOfficeProtocol-11 =  Response-11
+
+Response-11 =   "+OK Logging out." %x0d0a ;+OK Logging out.\r\n
+
+
+

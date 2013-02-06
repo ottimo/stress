@@ -1,0 +1,5 @@
+<% form_remote_tag :url => { :controller => :libraries, :action => :create_library }, :update => "actions", :success => "notify(); update_libraries_list();" do %>
+	<label for="new_library">Enter library name:</label><br/>
+	<%= text_field_tag "library" %><br/>
+	<%= submit_tag "Create!" %><br/>
+<% end %>

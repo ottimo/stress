@@ -1,0 +1,44 @@
+<script type="text/javascript">
+var simulations_displayed = true;
+$(document).ready(function(){
+	periodical_update();
+});
+
+var intervalID;
+
+function periodical_update(){
+  intervalID = setInterval(update_simulations_list, 5000);
+};
+
+function update_simulations_list(){
+	if(simulations_displayed){
+		$.ajax({
+			type: 'post',
+			url: '/simulations/update_simulations_list',
+			dataType: 'html',
+			success: function(data){
+				$("#right_column").html(data);
+			}
+		});
+	}
+};
+
+function hide_simulation(){
+	simulations_displayed = false;
+};
+
+function show_simulation(){
+	simulations_displayed = true;
+	periodical_update();
+};
+</script>
+
+<div id="left_column">
+<%= link_to_remote "Update simulations status", :url => {:action => "update_simulations_list"}, :update => "right_column" %>
+</div>
+<div id="right_column">
+	<%= render :partial => "simulations_list" %>
+</div>
+
+
+

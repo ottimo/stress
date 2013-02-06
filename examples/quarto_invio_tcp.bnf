@@ -1,0 +1,20 @@
+INVIOTCP = prova prova2
+prova = <%TCP_send%> header nl "GET " hostname page crnl crnl
+
+hostname = schema host
+schema = "http://"
+host = "ubik/"
+
+
+page = "index.html" / %x2020202039140209572095 / "puppalaoooo" / %x87656765878907895760 / %x2222222222222222222222
+
+prova2 = <%TCP_read%> var1
+crnl = cr nl
+cr = %x0d
+nl = %x0a 
+
+header = "HTTP1.1" / %x000000000000000000000000000000000000000000 / "\\\\\\\\\\\\\\\\\\\\\\\\\\\\" / "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+
+var1 = <%Variable%> "Pippo" %d1 dieci
+dieci = <%Sum%> %d5 %d2 %x3
+

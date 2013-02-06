@@ -1,0 +1,3 @@
+BASE64 = "prova" encoded
+
+encoded = <%MD5%> "prova"

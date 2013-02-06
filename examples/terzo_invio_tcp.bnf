@@ -1,0 +1,25 @@
+INVIOTCP = prova prova2
+prova = <%TCP_send%> header nl "GET " hostname page crnl crnl
+prova2 = <%TCP_read%> maskcheck
+
+hostname = schema host
+schema = "http://"
+host = "ubik/"
+page = "index.html"; / %x2020202039140209572095 / "puppalaoooo" / %x87656765878907895760 / %x2222222222222222222222
+
+crnl = cr nl
+cr = %x0d
+nl = %x0a 
+
+maskcheck = <%MaskCheck%> mask data
+mask = %xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
+data = data1 data2 data3
+data1 = %x3c21444f43545950452048544d4c205055424c494320222d2f2f494554462f2f 
+data2 = %x4454442048544d4c20322e302f2f454e223e0a3c68746d6c3e3c686561643e0a 
+data3 = %x3c7469746c653e33303220466f756e643c2f7469746c653e
+
+
+;data = %x3c2144
+
+header = "HTTP1.1" / %x2020202020202020202020 / %x000000000000000000000000000000000000000000 / "\\\\\\\\\\\\\\\\\\\\\\\\\\\\" / "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+

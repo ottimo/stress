@@ -1,0 +1,23 @@
+source :rubygems
+#source "http://rubygems.org"
+#source :rubyforge
+#source "http://gems.rubyforge.org"
+#source :gemcutter
+#source "http://gemcutter.org"
+
+gem "fattr",	 		"2.2.0"
+gem "map",				"4.3.0"
+gem "arrayfields",	"4.7.4"
+gem "chronic", 		"0.6.2"
+gem "text", 			"0.2.0"
+gem "rack", 			"1.0.0"
+gem "rubyzip", 		"0.9.4"
+gem "nokogiri",	 	"1.5.0"
+gem "som", 				"0.0.4"
+gem "normalizer", 	"0.0.1"
+
+gem "rails", "2.3.4"
+
+gem "mysql"
+gem "savon"
+gem "bj"

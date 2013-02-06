@@ -1,0 +1,14 @@
+<% if @libraries.empty? %>
+	<i>No empty library found!</i>
+<% else %>
+	<% form_remote_tag :url => { :controller => :libraries, :action => :delete_library }, :update => "actions", :success => "notify(); update_libraries_list(); setTimeout(function(){ update_file_list();}, 500);"  do %>
+		<label for="library_select">Select empty library:</label><br/>
+		<select id="library_del_select" name="library_select">
+		<% for l in @libraries %>
+			<option value="<%= l.id %>"><%= l.name %></option>
+		<% end %>
+		</select><br/><br/>
+		<%= submit_tag "Delete" %>
+	<% end %>
+<% end %>
+

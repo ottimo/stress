@@ -1,0 +1,6 @@
+<div id="select_container_<%= session[:select_number] %>" style="margin-top:5px;">
+	Select a method: <%= select("wsdl", "methods_#{session[:select_number]}", session[:wsdl_methods].collect {|c| [c, c]}) %>
+	<button id="<%= session[:select_number] %>" onclick="add_method();">+</button>
+	<button id="<%= session[:select_number] %>" onclick="delete_method(this.id);">-</button>
+</div>
+

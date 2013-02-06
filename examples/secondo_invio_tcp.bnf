@@ -1,0 +1,14 @@
+INVIOTCP = prova prova2
+prova = "%STRESS_send%" "GET " hostname page crnl crnl
+
+hostname = schema host
+schema = "http://"
+host = "ubik/"
+
+page = "index.html" / "fault" 
+page =/ "puppa" / "strapuppa" 
+
+prova2 = "%STRESS_read%"
+crnl = cr nl
+cr = %x0d
+nl = %x0a

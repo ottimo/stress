@@ -1,0 +1,56 @@
+<div style="float:right; margin-top:30px; margin-right:10px;">
+	<%= button_to "Return to index", :controller => :users, :action => :user_index %>
+</div>
+<div style="clear:both;"></div>
+<br/><strong>Rename file:</strong><br/><br/>
+
+<% form_remote_tag :url => {:controller => :abnf_files, :action => :rename_file, :file_id => @file.id}, :update => "right_column", :success => "notify();" do %>
+	<%= text_field_tag :file_name, @file.name %>
+	<%= submit_tag "Rename", :disabled => @access_rules.permissions != "w" %>
+<% end %>
+
+
+<br/><hr><br/><strong>Share file with:</strong><br/><br/>
+
+<% if @users.length != 1 %>
+	<% form_remote_tag :url => {:controller => :abnf_files, :action => :add_access_rule, :file => @file.id}, :update => "right_column", :success => "notify();" do %>
+	<select id="user" name="user">
+		<% for u in @users %>
+			<% if u.username != "admin" && u.username != session[:username] %>
+				<option value="<%= u.id %>"><%= u.username %></option>
+			<% end %>
+		<% end %>
+	</select>
+  &nbsp;&nbsp;Write permission?
+ <input type="checkbox" name="permissions" value="w"/>
+	<%= submit_tag "Share now!" %>
+	<% end %>
+<% else %>
+	<i>Every user can see this file!</i><br/>
+<% end %>
+
+
+<br/><hr><br/><strong>Copy file:</strong><br/><br/>
+	<% form_remote_tag :url => {:controller => :abnf_files, :action => :copy_file, :file_id => @file.id}, :update => "right_column", :success => "notify();" do %>
+		<%= text_field_tag :new_file_name, @file.name %>
+		<select id="library" name="library">
+			<% for l in @libraries %>
+				<option value="<%= l.id %>"><%= l.name %></option>
+			<% end %>
+		</select>
+	<%= submit_tag "Copy now!" %>
+	<% end %>
+
+	
+<br/><hr><br/><strong>Move file:</strong><br/><br/>
+	<% form_remote_tag :url => {:controller => :abnf_files, :action => :move_file, :file_id => @file.id}, :update => "right_column", :success => "notify();" do %>
+		<select id="library" name="library">
+			<% for l in @libraries %>
+				<% if l != @file.library %>
+					<option value="<%= l.id %>"><%= l.name %></option>
+				<% end %>
+			<% end %>
+		</select>
+	<%= submit_tag "Move now!" %>
+	<% end %>
+

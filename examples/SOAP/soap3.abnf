@@ -1,0 +1,66 @@
+root = packet-1
+
+packet-1 = <read or send> Ethernet-1 InternetProtocol-1 TransmissionControlProtocol-1 HypertextTransferProtocol-1
+
+Ethernet-1 =  Destination-1 Source-1 Type-1
+
+Destination-1 =  %x000f1ffa4c0d
+
+Source-1 =  %x00236c849b90
+
+Type-1 =  %x0800
+
+InternetProtocol-1 =  Version-1 HeaderLength-1 DifferentiatedServicesField-1 TotalLength-1 Identification-1 Flags-1 FragmentOffset-1 TimeToLive-1 Protocol-1 HeaderChecksum-1 InternetProtocolSource-1 InternetProtocolDestination-1
+
+Version-1 =  %x04
+
+HeaderLength-1 =  %x14 ;Header length: 20 bytes
+
+DifferentiatedServicesField-1 =  %x00 ;Differentiated Services Field: 0x00 (DSCP 0x00: Default; ECN: 0x00)
+
+TotalLength-1 =  %x02d5
+
+Identification-1 =  %x58e1
+
+Flags-1 =  %x02 ;Flags: 0x02 (Don't Fragment)
+
+FragmentOffset-1 =  %x0000
+
+TimeToLive-1 =  %x40
+
+Protocol-1 =  %x06 ;Protocol: TCP (0x06)
+
+HeaderChecksum-1 =  %xe5e1 ;Header checksum: 0xe5e1 [correct]
+
+InternetProtocolSource-1 =  %xc0a80b3e
+
+InternetProtocolDestination-1 =  %x8a58a321
+
+TransmissionControlProtocol-1 =  SourcePort-1 DestinationPort-1 SequenceNumber-1 AcknowledgementNumber-1 TransmissionControlProtocolHeaderLength-1 TransmissionControlProtocolFlags-1 WindowSize-1 Checksum-1 TCPOptions-1
+
+SourcePort-1 =  %xcfef ;Source port: 53231 (53231)
+
+DestinationPort-1 =  %x0050 ;Destination port: 80 (80)
+
+SequenceNumber-1 =  %x00000001 ;Sequence number: 1    (relative sequence number)
+
+AcknowledgementNumber-1 =  %x00000001 ;Acknowledgement number: 1    (relative ack number)
+
+TransmissionControlProtocolHeaderLength-1 =  %x20 ;Header length: 32 bytes
+
+TransmissionControlProtocolFlags-1 =  %x18 ;Flags: 0x18 (PSH, ACK)
+
+WindowSize-1 =  %xffff
+
+Checksum-1 =  %x4f69 ;Checksum: 0x4f69 [validation disabled]
+
+TCPOptions-1 =  %x0101080a16cb0e17056a7412 ;Options: (12 bytes)
+
+HypertextTransferProtocol-1 =  Data-1
+
+Data-1 =  DataData-1
+
+DataData-1 =  %x3c3f786d6c2076657273696f6e3d22312e302220656e636f64696e673d227574662d38223f3e0d0a20203c534f41502d454e563a456e76656c6f70650d0a20202020786d6c6e733a7873643d22687474703a2f2f7777772e77332e6f72672f323030312f584d4c536368656d61220d0a20202020786d6c6e733a7873693d22687474703a2f2f7777772e77332e6f72672f323030312f584d4c536368656d612d696e7374616e6365220d0a20202020786d6c6e733a534f41502d454e433d22687474703a2f2f736368656d61732e786d6c736f61702e6f72672f736f61702f656e636f64696e672f220d0a20202020534f41502d454e563a656e636f64696e675374796c653d22687474703a2f2f736368656d61732e786d6c736f61702e6f72672f736f61702f656e636f64696e672f220d0a20202020786d6c6e733a534f41502d454e563d22687474703a2f2f736368656d61732e786d6c736f61702e6f72672f736f61702f656e76656c6f70652f223e0d0a2020202020203c534f41502d454e563a426f64793e0d0a20202020202020203c6d3a4d6574686f643120786d6c6e733a6d3d22687474703a2f2f7777772e536f6170436c69656e742e636f6d2f786d6c2f536f6170526573706f6e6465722e7773646c223e0d0a202020202020202020203c62737472506172616d31207873693a747970653d227873643a737472696e67223e6369616f3c2f62737472506172616d313e0d0a202020202020202020203c62737472506172616d32207873693a747970653d227873643a737472696e67223e726f73693c2f62737472506172616d323e0d0a20202020202020203c2f6d3a4d6574686f64313e0d0a2020202020203c2f534f41502d454e563a426f64793e0d0a202020203c2f534f41502d454e563a456e76656c6f70653e0d0a
+
+
+
