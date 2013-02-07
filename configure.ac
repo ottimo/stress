@@ -8,6 +8,9 @@ AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 AC_CONFIG_SRCDIR([lib/composite_factory.cc])
 AC_CONFIG_HEADERS([config.h])
 
+# Patch for autoreconf >= 1.12
+m4_ifdef([AM_PROG_AR], [AM_PROG_AR])
+
 # Checks for programs.
 AC_PROG_CXX
 AC_PROG_CC

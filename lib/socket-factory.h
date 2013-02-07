@@ -7,6 +7,8 @@
 #include <tcp-read-action.h>
 #include <raw-send-action.h>
 #include <raw-read-action.h>
+#include <btrfcomm-send-command.h> //Newly added!
+#include <btrfcomm-read-command.h> //Newly added!
 #include <socket.h>
 #include <udp-socket.h>
 #include <tcp-socket.h>
@@ -28,6 +30,8 @@ class SocketFactory {
 		Socket* getSocket(TcpReadAction*);
 		Socket* getSocket(RawSendAction*);
 		Socket* getSocket(RawReadAction*);
+		Socket* getSocket(BTrfcommSend*); //Newly added!
+		Socket* getSocket(BTrfcommRead*); //Newly added!
 		Socket* getSocket();
 		
 		void releaseSocket(UdpSendAction*);
@@ -36,6 +40,8 @@ class SocketFactory {
 		void releaseSocket(TcpReadAction*);
 		void releaseSocket(RawSendAction*);
 		void releaseSocket(RawReadAction*);
+		void releaseSocket(BTrfcommSend*); //Newly added!
+		void releaseSocket(BTrfcommRead*); //Newly added!
 		void releaseSocket();
 		void releaseSocket(Socket*);
 		void releaseAllSocket();
@@ -52,9 +58,12 @@ class SocketFactory {
 		void		releaseTcpSocket();
 		Socket* 	getRawSocket();
 		void		releaseRawSocket();
+		Socket* 	getBTrfcommSocket();//newly added!
+		void		releaseBTrfcommSocket();//newly added!
 		Socket*		newTcpSocket();
 		Socket*		newUdpSocket();
 		Socket*		newRawSocket();
+		Socket*		newBTrfcommSocket();//newly added!
 	public:
 
 	protected:
@@ -67,6 +76,8 @@ class SocketFactory {
 		Socket* tcp_socket;
 		int raw;
 		Socket* raw_socket;
+		int btrfcomm;//newly added!
+		Socket* btrfcomm_socket; //newly added!
 };
 
 #endif

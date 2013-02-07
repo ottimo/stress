@@ -17,32 +17,24 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "u-pause-command.h"
+#include "btrfcomm-send-command.h"
+#include <socket-factory.h>
 #include "composite.h"
 #include <ok-state.h>
-#include <unistd.h>
+#include <fail-state.h>
 
-UPauseCommand::UPauseCommand() : Command("<%UPause%>"){
-	my_action = std::string("UPause");
+
+BTrfcommSend::BTrfcommSend() : Command("<%BTrfcomm_send%>"){
+	my_action = std::string("BTrfcommSend");
 };
 
-UPauseCommand::~UPauseCommand(){};
+BTrfcommSend::BTrfcommSend(Socket* s) : Command("<%BTrfcomm_send%>"){
+	my_action = std::string("BTrfcommSend");
+	socket = s;
+};
+BTrfcommSend::~BTrfcommSend(){};
 
-Action* UPauseCommand::clone(){ 
-	return new UPauseCommand(); 
+Action* BTrfcommSend::clone(){ 
+	return new BTrfcommSend(SocketFactory::getInstance()->getSocket(this)); 
 };
 
-State* UPauseCommand::runAction(Composite* c){
-	// this method implements action
-	OkState* ret= new OkState(c->getId());
-	std::vector<State*> result = runSonsAction(c);
-	int usec = 0;
-	if(result.size()>1)
-		usec = result[1]->getIntegerValue();
-	
-	
-	usleep(usec);
-
-	*ret << result;
-	return ret;
-};

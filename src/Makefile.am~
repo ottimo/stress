@@ -1,5 +1,5 @@
 #LFLAGS=--header-file=scanner.hh --outfile=scanner.cc
-BUILT_SOURCES = parser.hh
+BUILT_SOURCES = # parser.h
 AM_LFLAGS= --header-file=scanner.h --outfile=scanner.cc
 AM_YFLAGS= -d -p parser
 

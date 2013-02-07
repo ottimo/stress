@@ -1,7 +1,7 @@
 /* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
 /*
  * trunk
- * Copyright (C) Matteo Rosi 2010 <matteo.rosi@gmail.com>
+ * Copyright (C) Matteo Rosi 2009 <matteo.rosi@gmail.com>
  * 
  * trunk is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -17,32 +17,25 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "u-pause-command.h"
+#include "btrfcomm-read-command.h"
+#include <socket-factory.h>
 #include "composite.h"
 #include <ok-state.h>
-#include <unistd.h>
+#include <fail-state.h>
 
-UPauseCommand::UPauseCommand() : Command("<%UPause%>"){
-	my_action = std::string("UPause");
+BTrfcommRead::BTrfcommRead() : Command("<%BTrfcomm_read%>"){
+	my_action = std::string("BTrfcommRead");
+	//socket = SocketFactory::getInstance()->getSocket(this);
 };
 
-UPauseCommand::~UPauseCommand(){};
-
-Action* UPauseCommand::clone(){ 
-	return new UPauseCommand(); 
+BTrfcommRead::BTrfcommRead(Socket* s) : Command("<%BTrfcomm_read%>"){
+	my_action = std::string("BTrfcommRead");
+	socket = s;
 };
 
-State* UPauseCommand::runAction(Composite* c){
-	// this method implements action
-	OkState* ret= new OkState(c->getId());
-	std::vector<State*> result = runSonsAction(c);
-	int usec = 0;
-	if(result.size()>1)
-		usec = result[1]->getIntegerValue();
-	
-	
-	usleep(usec);
 
-	*ret << result;
-	return ret;
+BTrfcommRead::~BTrfcommRead(){};
+
+Action* BTrfcommRead::clone(){ 
+	return new BTrfcommRead(SocketFactory::getInstance()->getSocket(this)); 
 };

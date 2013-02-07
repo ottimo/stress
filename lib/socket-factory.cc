@@ -1,6 +1,7 @@
 #include <socket-factory.h>
 #include <udp-socket.h>
 #include <tcp-socket.h>
+#include <btrfcomm-socket.h>
 #include <tcp-server-socket.h>
 #include <raw-socket.h>
 #include <configurator.h>
@@ -15,7 +16,7 @@ SocketFactory* SocketFactory::getInstance(){
 
 SocketFactory::SocketFactory() : udp(0), udp_socket(0),
 											tcp(0), tcp_socket(0),
-											raw(0), raw_socket(0) {
+											raw(0), raw_socket(0) ,btrfcomm(0), btrfcomm_socket(0){
 	
 };
 
@@ -27,6 +28,8 @@ SocketFactory::~SocketFactory(){
 		delete tcp_socket;
 	if(raw_socket)
 		delete raw_socket;
+	if(btrfcomm_socket)
+		delete btrfcomm_socket;
 };
 
 Socket* SocketFactory::getSocket (){
@@ -37,6 +40,8 @@ Socket* SocketFactory::getSocket (){
 		return getTcpSocket();
 	}else if(raw){
 		return getRawSocket();
+	}else if(btrfcomm){
+		return getBTrfcommSocket();
 	}else
 		return NULL;
 };
@@ -47,6 +52,8 @@ void SocketFactory::releaseSocket (){
 	}else if(Configurator::getInstance ()->isTcp()){
 		return releaseTcpSocket ();
 	}
+	if(btrfcomm)
+		releaseBTrfcommSocket(); // not sure which is the Configuratore role
 };
 
 Socket* SocketFactory::getSocket(UdpSendAction* action){
@@ -152,7 +159,36 @@ void SocketFactory::releaseRawSocket(){
 		delete raw_socket;
 	}
 };
+////////////////////////////////////
+Socket* SocketFactory::getSocket(BTrfcommRead* action){
+	return getBTrfcommSocket();
+};
+Socket* SocketFactory::getSocket(BTrfcommSend* action){
+	return getBTrfcommSocket();
+};
 
+Socket* SocketFactory::getBTrfcommSocket(){
+	if(btrfcomm == 0)
+		btrfcomm_socket = newBTrfcommSocket();
+	btrfcomm++;
+	return btrfcomm_socket;
+};
+
+void SocketFactory::releaseSocket(BTrfcommRead* action){
+	releaseBTrfcommSocket();
+};
+void SocketFactory::releaseSocket(BTrfcommSend* action){
+	releaseBTrfcommSocket();
+};
+
+void SocketFactory::releaseBTrfcommSocket(){
+	btrfcomm--;
+	if(btrfcomm <= 0 && btrfcomm_socket){
+		btrfcomm = 0;
+		delete btrfcomm_socket;
+	}
+};
+//////////////////////////////////
 void SocketFactory::reconnectSocket(){
 	if(tcp)
 		tcp_socket->reconnect();
@@ -160,6 +196,8 @@ void SocketFactory::reconnectSocket(){
 		udp_socket->reconnect();
 	if(raw)
 		raw_socket->reconnect();
+	if(btrfcomm)
+		btrfcomm_socket->reconnect();
 };
 
 void SocketFactory::releaseAllSocket (){
@@ -174,6 +212,10 @@ void SocketFactory::releaseAllSocket (){
 	if(raw_socket){
 		delete raw_socket;
 		raw_socket = 0;
+	}
+	if(btrfcomm_socket){
+		delete btrfcomm_socket;
+		btrfcomm_socket = 0;
 	}
 };
 
@@ -192,4 +234,7 @@ Socket* SocketFactory::newUdpSocket(){
 
 Socket* SocketFactory::newRawSocket(){
 	return new RawSocket();
+};
+Socket* SocketFactory::newBTrfcommSocket(){
+	return new BTrfcommSocket();
 };
