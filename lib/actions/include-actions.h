@@ -28,3 +28,5 @@
 #include<memorize-command.h>
 #include<repeat-command.h>
 #include<ceildivide-command.h>
+#include<btrfcomm-send-command.h>
+#include<btrfcomm-read-command.h>
