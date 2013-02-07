@@ -17,32 +17,27 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "u-pause-command.h"
-#include "composite.h"
-#include <ok-state.h>
-#include <unistd.h>
+#ifndef _BTRFCOMM_SEND_COMMAND_H_
+#define _BTRFCOMM_SEND_COMMAND_H_
 
-UPauseCommand::UPauseCommand() : Command("<%UPause%>"){
-	my_action = std::string("UPause");
+#include <state.h>
+#include <send-action.h>
+#include <string>
+#include <socket.h>
+#include <command.h>
+
+class BTrfcommSend : public SendAction, Command{
+	public:
+		BTrfcommSend();
+		BTrfcommSend(Socket*);
+		~BTrfcommSend();
+		Action* clone();
+	protected:
+
+	private:
+
 };
 
-UPauseCommand::~UPauseCommand(){};
+static BTrfcommSend* btrfcomm_send = new BTrfcommSend();
 
-Action* UPauseCommand::clone(){ 
-	return new UPauseCommand(); 
-};
-
-State* UPauseCommand::runAction(Composite* c){
-	// this method implements action
-	OkState* ret= new OkState(c->getId());
-	std::vector<State*> result = runSonsAction(c);
-	int usec = 0;
-	if(result.size()>1)
-		usec = result[1]->getIntegerValue();
-	
-	
-	usleep(usec);
-
-	*ret << result;
-	return ret;
-};
+#endif // _SKEL_COMMAND_H_

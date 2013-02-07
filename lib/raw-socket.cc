@@ -13,6 +13,7 @@
 
 #include <raw-socket.h>
 #include <configurator.h>
+#include <unistd.h>
 
 int read_wrapper(int i, void* cpp, int l){
 	return read(i, cpp, l);
