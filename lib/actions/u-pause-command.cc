@@ -20,6 +20,7 @@
 #include "u-pause-command.h"
 #include "composite.h"
 #include <ok-state.h>
+#include <unistd.h>
 
 UPauseCommand::UPauseCommand() : Command("<%UPause%>"){
 	my_action = std::string("UPause");

@@ -145,6 +145,6 @@ void BTrfcommSocket::reconnect(){
 			close_a_socket(socket);
 			sleep(1); //needed because device is busy
 			status = create_btrfcomm_socket(&socket,&addr); 		
-		} while(status < 0)
+		} while(status < 0);
  //TODO check status error
 };

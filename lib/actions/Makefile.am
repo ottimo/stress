@@ -53,10 +53,10 @@ libactions_a_SOURCES = 	action.cc \
 								ceildivide-command.h \
 								repeat-command.cc \
 								repeat-command.h \
-								btrfcomm-send-action.cc \
-								btrfcomm-send-action.h \
-								btrfcomm-read-action.h \
-								btrfcomm-read-action.cc \
+								btrfcomm-send-command.cc \
+								btrfcomm-send-command.h \
+								btrfcomm-read-command.h \
+								btrfcomm-read-command.cc
 #libactions_a_HEADERS = 	action.h \
 #								or-action.h \
 #								repeat-action.h \
