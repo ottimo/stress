@@ -24,3 +24,4 @@ config.status
 configure.scan
 compile
 .deps
+stamp-h1
