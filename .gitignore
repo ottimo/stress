@@ -11,3 +11,16 @@
 *.lai
 *.la
 *.a
+
+#
+autoscan.log
+autom4te.cache/
+ar-lib
+Makefile
+*~
+config.h
+config.log
+config.status
+configure.scan
+compile
+.deps
