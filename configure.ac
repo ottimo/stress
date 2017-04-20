@@ -26,6 +26,7 @@ AC_PROG_MAKE_SET
 # Checks for header files.
 AC_CHECK_HEADERS([string.h])
 AC_CHECK_HEADERS([boost/asio.hpp])
+AC_CHECK_HEADERS([bluetooth/bluetooth.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 AC_TYPE_UINT8_T
@@ -33,6 +34,16 @@ AC_TYPE_UINT8_T
 # Checks for library functions.
 AC_CHECK_FUNCS([memset])
 
+# Checks for program
+AC_CHECK_PROG(BISON,[bison],[bison],[no])
+test "$BISON" == "no" && AC_MSG_ERROR([Required program 'bison' not found.])
+AC_CHECK_PROG(FLEX,[flex],[flex],[no])
+test "$FLEX" == "no" && AC_MSG_ERROR([Required program 'flex' not found.])
+AC_PROG_YACC
+AC_PROG_LEX
+
+test "$YACC" == ":" && AC_MSG_ERROR([Required program 'bison' not found.])
+test "$LEX" == ":" && AC_MSG_ERROR([Required program 'flex' not found.])
 AC_CONFIG_SRCDIR([src/main.cc])
 
 AC_CONFIG_FILES([Makefile lib/Makefile lib/state/Makefile lib/actions/Makefile src/Makefile])
