@@ -43,7 +43,7 @@ void Configurator::usage() {
     ss << "" << std::endl;
  	ss << "--monitor	 -M			Activate observing modules" << std::endl;
 	ss << "" << std::endl;
-	ss << "--delay n	 -D n			Delay n (msec) befare AND after a test case" << std::endl;
+	ss << "--delay n	 -D n			Delay n (msec) before AND after a test case" << std::endl;
 	ss << "" << std::endl;
     ss << "--inject	 -j MODE		Activate anomalies auto-injection. 0(none),1+(string),2+(hex),3+(dec),4+(bin)" << std::endl;
 	ss << "--generator	 -g GENERATOR		Select TestCase Generator:" << std::endl;
